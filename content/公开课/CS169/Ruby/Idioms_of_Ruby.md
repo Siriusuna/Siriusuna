@@ -12,7 +12,7 @@ _**Iterator allows objects to manage their own traversal.**_
 # Some Thought of Functional Programming
 ![](IMG-20251213231156944.png)
 When we write Ruby, `a.b.c.d`, we actually call method b to object a and return a value perceived as expression and evaluated to another object to call method c... so forth.
-Just like what we do at [Scheme](Programs_as_Data.md).
+Just like what we do at [Scheme](Programs%20as%20Data.md).
 
 Methods calling always do not modify object except those end with `!`, that also reflects the thought of without side-effects.
 

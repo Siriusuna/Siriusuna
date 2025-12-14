@@ -1,4 +1,4 @@
-[Object-Oriented_Programming(OOP)](Object-Oriented_Programming(OOP).md)
+[Object-Oriented Programming(OOP)](Object-Oriented%20Programming(OOP).md)
 ![](IMG-20251213231201559.png)
 
 # Basic

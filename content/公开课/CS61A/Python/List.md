@@ -121,7 +121,7 @@ def reduce_health(self, amount):
 There we use slicing, a swallow copy. So that we can have a same list as begin, but the content, `Bee` object is the same one. What we operate to these object will do affect the object in original list. But we just delete the bees in original one so that our iterate will not be influenced.
 ^fxmjvk
 
-All in all, there will not be any problems if it does not have a nested [Mutable_Variable](Mutable_Variable.md), but if so, we should consider whether we want it to refer a same object or not and decide to have a shallow or deep copy.
+All in all, there will not be any problems if it does not have a nested [Mutable Variable](Mutable%20Variable.md), but if so, we should consider whether we want it to refer a same object or not and decide to have a shallow or deep copy.
 
 
 ---
@@ -156,7 +156,7 @@ digits[-2] # 2
 6. Select a negative index is valid, which mean count from the end and begin with -1
 # Manipulate or Iterate over Subsequences
 ## For Statement
-_**[For statement](Control_Statement.md) is used to help us manipulate or iterate over subsequences.**_ ^2bi6wh
+_**[For statement](Control%20Statement.md) is used to help us manipulate or iterate over subsequences.**_ ^2bi6wh
 ### Unpacking
 Works with a sequence of **fixed-length sequences**
 ```python

@@ -14,7 +14,7 @@ JavaScript is single-threaded.
 ![](IMG-20251213231155761.png)
 
 # Idioms
-_**[Higher-Order_Function](Higher-Order_Function.md)**_
+_**[Higher-Order Function](Higher-Order%20Function.md)**_
 - Passing a function
 - immediate application / calling closure
 - passing function around a iterator

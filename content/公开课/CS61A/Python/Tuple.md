@@ -1,4 +1,4 @@
-_**An [immutable](Mutable_Variable.md) [Container](Container.md).**_  
+_**An [immutable](Mutable%20Variable.md) [Container](Container.md).**_  
 We can define a tuple with parentheses, in fact, we can also without any brackets, because any thing separated by commas is evaluated as a tuple.
 
 ```python

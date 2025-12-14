@@ -4,7 +4,7 @@ _**All expressions can use function call notation.**_
 求（方程式，公式，函数）的数值.  
 _**Expression can be evaluate differently in different [Environment](Environment.md).**_
 ##### Evaluation procedure for call expressions: 
-1.  Evaluate the [operator](Higher-Order_Function.md#^dcx251.md) and then the operand subexpressions .
+1.  Evaluate the [operator](Higher-Order%20Function.md#^dcx251.md) and then the operand subexpressions .
 2.  Apply the function that is the value of the operator subexpression to the arguments that are the values of the operand subexpression. ^5jxb0f
 ##### Procedure for calling/applying user-defined functions:
 1. Add a local frame, titled with the `<name>` of the function being called.

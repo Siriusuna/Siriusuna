@@ -10,7 +10,7 @@ It records the value of all the variables in this time (last sentence is execute
 #### Every expression is evaluated in the context of an environment.  
 - The global frame alone. 
 - A local frame, then the global frame.
-- Or, we have [nested function](Higher-Order_Function.md#^oiib41.md), local, parent, parent...then global.
+- Or, we have [nested function](Higher-Order%20Function.md#^oiib41.md), local, parent, parent...then global.
 
 _**All in all, find its parent.**_
 
@@ -26,7 +26,7 @@ _E.g., to look up some name in the body of the square function:_
 
 _**A call expression and the body of it are evaluate in different environment.**_
 
-# The Environment of [Higher-Order Function](Higher-Order_Function.md)
+# The Environment of [Higher-Order Function](Higher-Order%20Function.md)
 
 The rule above is still effective.
 
@@ -71,7 +71,7 @@ Function defined within another function bodies are bound to a name in a _local_
 
 _**Attention: The parent environment of a function is where it was defined rather than where it is called, so we have a [nonlocal](Names,_Assignment_and_User-Defined_Functions#^67c4ed.md) keyword in a function defined in a function, which indicate to use the variable in its parent environment - The Higher-Order Function where it is defined.**_
 
-# The Environment of [Recursive_Functions](Recursive_Functions.md)
+# The Environment of [Recursive Functions](Recursive%20Functions.md)
 
 - The same function fact is called multiple times. 
 - Different frames keep track of the different arguments in each call. 

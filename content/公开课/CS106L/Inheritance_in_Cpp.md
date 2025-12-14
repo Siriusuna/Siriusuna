@@ -1,10 +1,10 @@
-# [Compare with Java](Inheritance_and_Implements.md)
+# [Compare with Java](Inheritance%20and%20Implements.md)
 ![](IMG-20251213231201541.png)
 ![](IMG-20251213231202385.png)
 Called pure virtual function if `=0`.
 ![](IMG-20251213231203371.png)
 
-# [Abstract_Classes](Abstract_Classes.md)
+# [Abstract Classes](Abstract%20Classes.md)
 ![](IMG-20251213231204230.png)
 
 # About Inheritation

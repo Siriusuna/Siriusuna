@@ -3,7 +3,7 @@ _**An object should know how to present itself to the world as a string.**_
 An object value should behave like the kind of data it is meant to represent  
 For instance, by producing a string representation of itself
 
-_**Strings are important: they represent language and programs**_(That is something really interesting that our codes is also strings, our variable, our expression, etc. and in a specific way computer can read it and run it, especially in [a language like lisp](Programs_as_Data.md) where we can symbolic programming.)
+_**Strings are important: they represent language and programs**_(That is something really interesting that our codes is also strings, our variable, our expression, etc. and in a specific way computer can read it and run it, especially in [a language like lisp](Programs%20as%20Data.md) where we can symbolic programming.)
 
 In Python, all objects produce two string representations:  
 - The `str` is legible to humans  
