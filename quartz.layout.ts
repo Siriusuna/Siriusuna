@@ -40,19 +40,28 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.DesktopOnly(
-      Component.RecentNotes({
-        limit: 2,
-        // showTags: false,
-        filter(f) {
-          const tags = f.frontmatter?.tags ?? []
-          const excludedTags = new Set(["主页"])
-          for (const tag of tags) {
-            if (excludedTags.has(tag.toLowerCase())) {
-              return false
-            }
-          }
-          return true
+      Component.ConditionalRender({
+        condition: (page) => {
+          const tags = page.fileData.frontmatter?.tags ?? []
+          return tags.some(
+            (tag: string) => tag.toLowerCase() === "主页" || tag.toLowerCase() === "介绍",
+          )
         },
+        component: Component.DesktopOnly(
+          Component.RecentNotes({
+            limit: 2,
+            filter(f) {
+              const tags = f.frontmatter?.tags ?? []
+              const excludedTags = new Set(["主页", "介绍"])
+              for (const tag of tags) {
+                if (excludedTags.has(tag.toLowerCase())) {
+                  return false
+                }
+              }
+              return true
+            },
+          }),
+        ),
       }),
     ),
     Component.Flex({
@@ -69,6 +78,7 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
+    // Component.SpotifyPlayer(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],

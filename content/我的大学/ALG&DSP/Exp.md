@@ -15,7 +15,7 @@
 
 ## DFS 注意事项
 
-```C
+```c
 void dfs(int dif, int num, int depth)
 {
     for (int i = depth; i < n; i++)
@@ -40,7 +40,7 @@ void dfs(int dif, int num, int depth)
 
 Codes：
 
-```C
+```c
 if (s[1] == 0)
     return s;
 for (int i = 0; s[i] != 0; i++)
@@ -69,7 +69,7 @@ for (int i = 0; s[i] != 0; i++)
 
 ### 括号串
 
-```C
+```c
 bool canBeValid(char* s, char* locked) {
     int length = strlen(s);
     if (length % 2 != 0)
