@@ -1,0 +1,18 @@
+![](IMG-20251214143733172.png)
+
+# The Top Layer
+![](IMG-20251214143733205.png)
+Not P2P, not push architecture either.
+
+# The Second Top Layer
+## HTML and CSS
+![](IMG-20251214143733237.png)
+![](IMG-20251214143733274.png)
+![](IMG-20251214143733325.png)
+![](IMG-20251214143733363.png)
+![](IMG-20251214143733392.png)
+
+## Bootstrap
+![](IMG-20251214143733420.png)
+
+![](IMG-20251214143733453.jpg)

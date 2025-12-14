@@ -1,4 +1,4 @@
-**Hello, Wolrd!**
+# Hello, World!
 
 Welcome to my digital garden as well as my blog.
 

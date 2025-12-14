@@ -42,7 +42,7 @@ concept IndexableContainer = requires(C c, size_t i, T val) {
 ```
 ![](IMG-20251213231210748.png)
 
-We can make it more generalized by [Lambda_and_Function](Lambda_and_Function.md)!
+We can make it more generalized by [Lambda and Function](Lambda%20and%20Function.md)!
 
 # Overload Resolution
 ![](IMG-20251213231211110.png)

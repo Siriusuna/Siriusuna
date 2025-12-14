@@ -1,11 +1,11 @@
 ![](IMG-20251213231201588.png)
 ![](IMG-20251213231202704.png)
 - Container
-	- [Sequence_Container](Sequence_Container.md)
-	- [Associative_Container](Associative_Container.md)
-- [Container_Adaptor](Container_Adaptor.md)
+	- [Sequence Container](Sequence%20Container.md)
+	- [Associative Container](Associative%20Container.md)
+- [Container Adaptor](Container%20Adaptor.md)
 - [Iterator](Iterator.md)
-- [Lambda_and_Function](Lambda_and_Function.md)
+- [Lambda and Function](Lambda%20and%20Function.md)
 - [Algorithm](Algorithm.md)
 # Abstraction Philosophy 
 ![](IMG-20251213231201588.png)

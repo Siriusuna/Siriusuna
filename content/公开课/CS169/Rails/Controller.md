@@ -1,4 +1,4 @@
-# [Routes](RESTful_Resources_Routes_in_Rails.md)
+# [Routes](RESTful%20Resources%20Routes%20in%20Rails.md)
 # Redirection, the Flash and the Session
 
 ![](IMG-20251213231152472.png)
