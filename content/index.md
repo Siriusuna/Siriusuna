@@ -20,7 +20,7 @@ summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录
 你可以在这里找到:  
 - 我学习的一些国外 CS 课程的笔记
 - 我在学校学习的一些课程的笔记
-- 我在一些学习过程中产生的副产品 (我觉得写都写了, 不放上来镇场面不就白写了的东西, 比如 [CO 的设计文档](https://siriusuna.top/BUAA-CO).)
+- 我在一些学习过程中产生的副产品 (我觉得写都写了, 不放上来镇场面不就白写了的东西, 比如 [CO 的设计文档](https://siriusuna.top/%E6%88%91%E7%9A%84%E5%A4%A7%E5%AD%A6/Computer-Organization/Design-Document/).)
 - 我的一些日常想法, 博文一类的东西
 - 我可能会有的一些日语习作
 
