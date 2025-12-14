@@ -1,7 +1,7 @@
 ---
 title: 🪢 友链
 tags:
-  - 主页
+  - 介绍
   - 友链
 summary: Siriusuna 的友站
 ---
@@ -33,6 +33,20 @@ summary: Siriusuna 的友站
   <div>
     <div class="friend-name">SamuFlore's Dimension</div>
     <div class="friend-desc">德才兼備、知行合一</div>
+  </div>
+</a>
+<a href="https://lilyellow.site" class="friend-card">
+  <img src="http://lilyellow.site/images/labixiaoxin.jpg" class="friend-avatar" />
+  <div>
+    <div class="friend-name">Lilye</div>
+    <div class="friend-desc">这个人很懒，没有留下他的简介</div>
+  </div>
+</a>
+<a href="https://lanc1oud.top" class="friend-card">
+  <img src="https://lanc1oud.top/img/avatar.png" class="friend-avatar" />
+  <div>
+    <div class="friend-name">炊煙雲海。</div>
+    <div class="friend-desc">循此苦旅，以达繁星。</div>
   </div>
 </a>
 </div>
