@@ -2,11 +2,11 @@
 title: 欢迎来到「シリウスナ」
 created: 2025-12-10
 published: 2025-12-10
-modified: 2025-12-11
+modified: 2025-12-14
 tags:
   - 主页
   - 介绍
-summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录
+summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录我的一切
 ---
 
 # 「よくそう、シリウスの砂、小さな惑星」
@@ -15,7 +15,7 @@ summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录
 ・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー
 </div>
 
-# 「ここはどこ」
+# 主な内容
 
 你可以在这里找到:  
 - 我学习的一些国外 CS 课程的笔记
@@ -36,14 +36,37 @@ summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录
 ・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー
 </div>
 
-# 「シリウスの心臓」
+# ありがとうを伝えたい人たち
 
-***本站的命名由来.***
+这个网站的建立, 也要得益于许许多多的人在技术和情感上的支持, 在此特别感谢.  
+希望这份情感永恒地驻留在互联网的一隅. 并且, 有朝一日, 可以随着网络线路传达给大家.
+
+<div style="text-align: center;">
+・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー
+</div>
+
+## 技術の面で
+
+- [Obsidian](https://obsidian.md/), 作为我记笔记的工具, 这些笔记成为了这个网站产生的动机.
+- [Quartz](https://quartz.jzhao.xyz/), 作为本站的框架, 为我最大限度保留笔记完整内容和形式提供巨大助力, 没有这个框架, 本站可能不会存在, 或者至少失去我所爱的这种数字花园的形式, 对我来说是很大的损失.
+- [virgiling | 思想犯](https://virgiling.wiki/), 一位前辈的优秀的博客网站, 为本站搭建提供了很多指导和帮助, 同时也让我觉得 Quartz 有不输给主流博客框架乃至更高的可玩性, 从而下定决心使用这个框架.
+- [Xlenco](https://www.xlenco.top/), 为此博客网站提供了[灯箱代码](https://github.com/jackyzha0/quartz/pull/2074/commits).
+
+<div style="text-align: center;">
+・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー
+</div>
+
+## 気持ちの面で
+
+### ヰ世界情緒
+我最爱的歌手, 以及她所演唱的 ——「シリウスの心臓」
+
+本站的命名由来. 我所珍爱的乐曲, 浪漫而优雅的词曲, 温柔而坚强的歌声. 
 
 <figure style="
     text-align: center; 
     max-width: 600px; 
-    margin: 0 auto; /* 确保整个 figure 居中 */
+    margin: 0 auto;
 ">
     <a href="https://www.youtube.com/watch?v=UKZt1vq8bKI"  title="シリウスの心臓">
         <img 
@@ -65,16 +88,13 @@ summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录
     </figcaption>
 </figure>
 
-<div style="text-align: center;">
-・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー
-</div>
+### 以及...
 
-# Acknowledgement
+我所珍爱的, 从小到大, 我所有珍贵的友人们, 无论是否还在我的身旁, 或者与我有无联络.
 
-- [Obsidian](https://obsidian.md/), 作为我记笔记的工具, 这些笔记成为了这个网站产生的动机.
-- [Quartz](https://quartz.jzhao.xyz/), 作为本站的框架, 为我最大限度保留笔记完整内容和形式提供巨大助力, 没有这个框架, 本站可能不会存在, 或者至少失去我所爱的这种数字花园的形式, 对我来说是很大的损失.
-- [virgiling | 思想犯](https://virgiling.wiki/), 一位前辈的优秀的博客网站, 为本站搭建提供了很多指导和帮助, 同时也让我觉得 Quartz 有不输给主流博客框架乃至更高的可玩性, 从而下定决心使用这个框架.
-- [Xlenco](https://www.xlenco.top/), 为此博客网站提供了[灯箱代码](https://github.com/jackyzha0/quartz/pull/2074/commits).
+还有光顾此处, 并且阅读到这里的你, 希望你可以在这里找到你所想要的.
+
+那么... 
 
 <div style="text-align: center;">
 ・・ ・ー・・ ーーー ・・・ー ・ ー・ーー ーーー ・・ー

@@ -124,8 +124,13 @@ summary: ここはどこ？
 音乐, 文学, 代码.  
 这便是构成我的血肉了.  
 所以...  
-**`想像する，創造する！`**
 
+<strong>
+<blockquote class="lyrics">
+迷いは捨てて信じた道へ<br/>
+—— <a href="https://www.youtube.com/watch?v=llG2lX0_Sjg">「ANGELIC」- ヰ世界情緒</a>
+</blockquote>
+</strong>
 
 <style>
 .about-container {
