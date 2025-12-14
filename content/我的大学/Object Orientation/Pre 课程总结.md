@@ -8,7 +8,7 @@
 
 ## 最终架构概览图
 
-![UML Class Diagram](IMG-20251214141317748.png)
+![[IMG-20251214150224457.png|UML Class Diagram]]
 
 ## 主要的类
 
@@ -23,7 +23,7 @@
 **抽象类** , 下有各个指令的具体类实现, 分别负责在 `GameProcess` 里, 调用 `Gulid` 相关方法, 执行命令操作.  
 (具体类数量过多, 概览图中未给出, 具体结构如下)
 
-![Command Package](IMG-20251214141317779.png)
+![[IMG-20251214150224479.png|Command Package]]
 
 #### Lexer & Parser 类
 

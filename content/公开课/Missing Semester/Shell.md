@@ -71,4 +71,4 @@ drwxr-xr-x 2 zhonghan-wang zhonghan-wang 4096 Apr 10 02:36 Desktop
 Most command receiver _flag and option(flag with values)_ starting with `-` , which can modify their behavior.
 `.` for current directory and `.. `to its parent directory.
 
-**With these commands we can [Script](Script.md) with bash.**
+**With these commands we can [[Script]] with bash.**

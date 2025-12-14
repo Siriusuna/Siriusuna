@@ -5,7 +5,7 @@ _**Compound objects combine objects together**_
 - A rational number: a numerator and a denominator.
 _**An abstract data type lets us manipulate compound objects as units**_
 - Isolate two parts of any program that uses data:
-    - How data are represented (as parts) (e.g. use [Container](Container.md).) 
+    - How data are represented (as parts) (e.g. use [[Container]].) 
     - How data are manipulated (as units)  
     _Between them is the **abstraction barrier**._<font color="Red">(Lec.11)</font>
 - Data abstraction: A methodology by which functions enforce an abstraction barrier between **representation** and **use**.
@@ -16,7 +16,7 @@ A _data abstraction_ is a set of functions that compose and decompose compound
 - other functions called _selectors_ return parts of that whole (such as the numerator or denominator).
 
 # What is Data?
-- We need to guarantee that [#Constructor_and_Selector](#Constructor_and_Selector.md) functions work together to specify the right behavior
+- We need to guarantee that [[#Constructor and Selector]] functions work together to specify the right behavior
 - Behavior condition: If we construct rational number x from numerator n and denominator d, then `numer(x) / denom(x)` must equal n/d
 - Data abstraction uses selectors and constructors to define behavior
 - If behavior conditions are met, then the representation is valid  

@@ -6,10 +6,10 @@ We can prevent programmers from making such mistakes with the `private` keyword 
 Hide implementation details from users of your class.
 - Less for user of class to understand.
 - Safe for you to change private methods (implementation).(Because there's nothing depend on it. So we'd better not to remove those `public` because something may rely on it.)
-This is [Abstraction Barrier](Data%20Abstraction.md).
+This is [[Data Abstraction|Abstraction Barrier]].
 
 # Nested Classes
-[Codes from Linked Data Structure](Linked%20Data%20Structure.md).
+[[Linked Data Structure|Codes from Linked Data Structure]].
 
 ```java
 public class SLList {

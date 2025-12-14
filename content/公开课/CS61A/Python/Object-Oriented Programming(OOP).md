@@ -1,15 +1,15 @@
 # Definition
-- A [class](#Class.md) combines (and abstract) data and functions. _(Blueprint)_
-- An [object](#Object.md) is an instantiation of a class.
-- All classes and instances have some [attributes](#Attribute.md).
+- A [[#Class.md|class]] combines (and abstract) data and functions. _(Blueprint)_
+- An [[#Object.md|object]] is an instantiation of a class.
+- All classes and instances have some [[#Attribute.md|attributes]].
 - OOP is:  
 	- a method for organizing modular programs.  
-		- [Abstraction barrier](Data%20Abstraction.md)
-		- [Bundling together information(data) and related behavior(function)](#Object.md)
+		- [[Data Abstraction|Abstraction barrier]]
+		- [[data) and related behavior(function)](#Object.md|Bundling together information(data) and related behavior(function)]]
     - A metaphor for computation using distribute state.
 		- Each object has its own state.
 		- Each object also knows how to manage its own local state, based on method calls.
-		- [Method](#Methods.md) calls are messages passed between objects.
+		- [[#Methods.md|Method]] calls are messages passed between objects.
 		- Several objects may all be instances of a common type.
 		- Different types may relate to each other.
     - Special syntax and vocabulary that can improve the composition of programs
@@ -66,7 +66,7 @@ It give an instance some attributes by attribute assignment.
 	- allocate memory for an object
 	- initialize the object with values.
 	- return address of the object
-	- _similar to a [List](List.md)_
+	- _similar to a [[List]]_
 
 
 ### Identity
@@ -74,7 +74,7 @@ _**Every object that is an instance of a user-defined class has a unique identit
 - Every call a class creates a new instance. There are only one class but lots of objects.
 - Bind an object to a new name using assignment does not create a new object.
 
-We can use [identity operators](Mutable%20Variable.md#^ggr4iq.md) to test if two expression evaluate to same object.
+We can use [[Mutable Variable#^ggr4iq.md]] to test if two expression evaluate to same object.
 
 ## Methods
 _**Methods are what represent message that an object will accept.**_
@@ -126,7 +126,7 @@ Dot notation accesses attributes of the instance **or** its class.
 - The `<expression>` can be any valid Python expression.
 - The `<name>` must be a simple name.
 
-[Evaluates to the value of the attribute](Expression.md) looked up by `<name>` in the object that is the value of the `<expression>`.
+[[Expression|Evaluates to the value of the attribute]] looked up by `<name>` in the object that is the value of the `<expression>`.
 
 It is:
 - `<expression> -> object`
@@ -136,7 +136,7 @@ It is:
 _**Attributes are data that is stored within either an instance or the class itself.**_
 
 The way to access them:
-- [#Dot_Expressions](#Dot_Expressions.md)
+- [[#Dot_Expressions.md|#Dot_Expressions]]
 - Some built-in functions
 
 ```python
@@ -153,10 +153,10 @@ True
 Looking up an attribute name in an object may return:  
 1. One of its instance attributes, **or**  
 2. One of the attributes of its class
-3. when it has a [base class](Inheritance.md#^cy20w2.md), looking up its base classes recursively.
+3. when it has a [[Inheritance#^cy20w2.md]], looking up its base classes recursively.
 (Looking up sequentially) ^ngtggr
 
-### Attribute [Assignment](Names,_Assignment_and_User-Defined_Functions.md)
+### Attribute [[Names,_Assignment_and_User-Defined_Functions.md|Assignment]]
 _**Attribute assignment statement change the value that are bound to attribute names within an object or a class.**_
 
 Assignment statements with a dot expression on their left - hand side affect attributes for the object of that dot expression  
@@ -182,13 +182,13 @@ tom_account = Account('Tom')
 	Attribute assignment statement adds or modifies the attribute named “interest” of <font color="Blue">tom_account</font>  
 	tom_account doesn't have an attribute named interest, so in this situation, we add one to it.  
 	So the name ("interest") is not looked up, although there is an attribute named interest in the class, we won't assign to it.  
-	Then when we look up for this attribute, the one in instance will be returned and will not changes in line with class's.([Remember order.](Object-Oriented%20Programming(OOP).md#^ngtggr.md))
+	Then when we look up for this attribute, the one in instance will be returned and will not changes in line with class's.([[Object-Oriented Programming(OOP|Remember order.]].md#^ngtggr.md))
 
 - Class Attribute Assignment:  
 	`Account.interest = 0.04`  
 	On the other hand, this will modify the class attribute, interest.
 
-[Shared attribute name constitute interface](Representation.md)
+[[Representation|Shared attribute name constitute interface]]
 
 ## Methods and Functions
 _**Method is an attribute that is a function.**_  

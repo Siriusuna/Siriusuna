@@ -1,4 +1,4 @@
-The built-in Scheme [list data structure](Fundamentals.md#^2gccw8.md) can represent [combinations](Fundamentals.md#^bmog31.md), using [Symbolic Programming](Symbolic%20Programming.md).
+The built-in Scheme [[Fundamentals#^2gccw8.md]] can represent [[Fundamentals#^bmog31.md]], using [[Symbolic Programming]].
 
 ```scheme
 > (list 'quotient 10 2)
@@ -9,7 +9,7 @@ The built-in Scheme [list data structure](Fundamentals.md#^2gccw8.md) can repres
 _**All the Scheme codes are just lists. We can write a program that writes a program.**_
 
 A complex combination is a nested Pair like this:(A and B are another combination like `(+ 3 2)`, etc.)
-![](IMG-20251214140902213.jpg)
+![[IMG-20251214150204372.jpg]]
 
 
 ```scheme
@@ -26,7 +26,7 @@ A complex combination is a nested Pair like this:(A and B are another combinatio
 There are two ways to quote an expression.
 - Quote
 - Quasiquote: Parts of a quasiquoted expression can be unquoted with comma
-![](IMG-20251214140902254.png)
+![[IMG-20251214150204416.png]]
 
 Example:
 ```scheme

@@ -2,4 +2,4 @@
 # Introspection and Metaprogramming
 # DRY
 
-![](IMG-20251214143644679.png)
+![[IMG-20251214150158443.png]]

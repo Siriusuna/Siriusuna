@@ -1,15 +1,15 @@
-# Some [objects](Object-Oriented%20Programming(OOP).md) can change value
+# Some [[Object-Oriented Programming(OOP|objects]].md) can change value
 All names that refer to the same object are affected by a mutation  
 Only objects of mutable types can change: **lists & dictionaries**
 
-## [List](List.md)
+## [[List]]
 - `append(elem)`: Add `elem` to the end of the list. Return `None`.
 - `extend(s)`: Add all elements of iterable `s` to the end of the list. Return `None`.
 - `insert(i, elem)`: Insert `elem` at index `i`. If `i` is greater than or equal to the length of the list, then `elem` is inserted at the end. This does not replace any existing elements, but only adds the new element `elem`. Return `None`.
 - `remove(elem)`: Remove the first occurrence of `elem` in list. Return `None`. Errors if `elem` is not in the list.
 - `pop(i)`: Remove and return the element at index `i`.
 - `pop()`: Remove and return the last element. 
-[Some are deep copy while some are not.](List.md#^fxmjvk.md)
+[[List#^fxmjvk.md]]
 
 ```python
 suits = ['coin','string','myriad']
@@ -59,7 +59,7 @@ def another_mystery():
 Straightly call four of global frame.
 
 
-## [Instance of Class](Object-Oriented%20Programming(OOP).md)
+## [[Object-Oriented Programming(OOP|Instance of Class]].md)
 
 
 # <font color="#5A7CC2">Lec.15</font>

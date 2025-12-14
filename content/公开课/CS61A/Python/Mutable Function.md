@@ -1,6 +1,6 @@
 _**Mutable functions are functions that have data associated with them that changes.**_  
 Usually assignment statement will search for the variable from the current frame, it can not affect the parent frame.  
-So, we need something to do that: [nonlocal](Names,_Assignment_and_User-Defined_Functions.md).
+So, we need something to do that: [[Names,_Assignment_and_User-Defined_Functions.md|nonlocal]].
 
 # Non-Local Statement and Persistent Local State
 ```python

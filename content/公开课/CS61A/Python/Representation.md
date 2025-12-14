@@ -3,7 +3,7 @@ _**An object should know how to present itself to the world as a string.**_
 An object value should behave like the kind of data it is meant to represent  
 For instance, by producing a string representation of itself
 
-_**Strings are important: they represent language and programs**_(That is something really interesting that our codes is also strings, our variable, our expression, etc. and in a specific way computer can read it and run it, especially in [a language like lisp](Programs%20as%20Data.md) where we can symbolic programming.)
+_**Strings are important: they represent language and programs**_(That is something really interesting that our codes is also strings, our variable, our expression, etc. and in a specific way computer can read it and run it, especially in [[Programs as Data|a language like lisp]] where we can symbolic programming.)
 
 In Python, all objects produce two string representations:  
 - The `str` is legible to humans  
@@ -228,7 +228,7 @@ This is how to manage to do that. To have a superclass and different represent a
 # Generic Functions
 _**Using interfaces and message passing is only one of several methods used to implement generic functions. We will consider two others in this section: type dispatching and type coercion.**_ ^59svd7
 
-## [#Interface](#Interface.md)
+## [[#Interface.md|#Interface]]
 ## Dispatching
 _**To write functions that inspect the type of arguments they receive, then execute code that is appropriate for those types.**_
 ## Coercion

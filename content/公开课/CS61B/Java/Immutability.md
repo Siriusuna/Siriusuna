@@ -1,4 +1,4 @@
-# [Mutable Variable](Mutable%20Variable.md), [Mutable Function](Mutable%20Function.md)
+# [[Mutable Variable]], [[Mutable Function]]
 
 _**An immutable data type is one for which an instance cannot change in any observable way after instantiation.**_
 
@@ -7,7 +7,7 @@ Example:
 - Immutable: Integer, String
 
 **The `final` keyword will help the compiler ensure immutability.(But not necessary to have `final` to be immutable, maybe just there is no code, no method, etc. to change this value)**
-![](IMG-20251214141130636.png)
+![[IMG-20251214150212575.png]]
 
 (Month, day, year is `final` and contrived is private and no method to changes in outside nor inside)
 

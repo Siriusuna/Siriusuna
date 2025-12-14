@@ -58,7 +58,7 @@ It is an expression so that it can be used as an argument.
 **POINT**
 - What to follow, or we say, keep track of?
 ### For Statement
-_**It can iterate an iterable value and also [Iteration](Iteration.md) itself.**_
+_**It can iterate an iterable value and also [[Iteration]] itself.**_
 ```python
 for <name> in <expression>:  
 	<suite>
@@ -80,4 +80,4 @@ for <name> in <expression>:
  """If we just specify one number it will be defaulted to the end value."""
  ```
 
-It is not an iterator , range can be call repeatedly, but it is [iterable](Iteration.md).
+It is not an iterator , range can be call repeatedly, but it is [[Iteration|iterable]].

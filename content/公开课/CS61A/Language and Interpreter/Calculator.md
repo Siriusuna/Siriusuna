@@ -10,12 +10,12 @@ class Pair:
 		self.second = second # Second is either a well-formed list or nil for a Pair to be a well-formed list.
 ```
 
-[Scheme expression are represented as Scheme lists!](Programs%20as%20Data.md)(Data representation equals to the source code representation: <font color="Yellow">Homoiconic</font>)
+[[Programs as Data|Scheme expression are represented as Scheme lists!]](Data representation equals to the source code representation: <font color="Yellow">Homoiconic</font>)
 
 # Syntax
 The calculator language has primitive expressions and call expressions.  
 These two things are like these two things in Scheme.
-![](IMG-20251214140740682.png)
+![[IMG-20251214150202799.png]]
 
 # Semantics
 The value of a calculator expression is defined recursively.
@@ -30,15 +30,15 @@ The value of a calculator expression is defined recursively.
 ## The `eval` Function
 _**The `eval` function computes the value of an expression represented as a Scheme list, which is always a number.**_
 
-It is a [generic function](Representation.md#^59svd7.md) that dispatches on the type of the expression (primitive or call).
+It is a [[Representation#^59svd7.md]] that dispatches on the type of the expression (primitive or call).
 
-![](IMG-20251214140740780.png)
+![[IMG-20251214150202820.png]]
 
 ## Applying Built-in Operator
 The `apply` function applies some operation to a (Scheme) list of argument values.  
 In calculator language, all operations are named by built-in operators: +, -, *, /
 
-![](IMG-20251214140740876.png)
+![[IMG-20251214150202843.png]]
 
 ```python
 def calc_apply(operator, args):

@@ -317,7 +317,7 @@ Head->rmark = 0, Head->rc = prior;
 ```
 
 我们仅仅是把 printf 改为建立关系，就得到了一个非递归版本，就是如此简单。
-我们可以封装一下，毕竟定义一个 Head 节点，并且前后处理两次，十分繁杂，而且[Do not repeat yourself](Higher-Order%20Function.md).
+我们可以封装一下，毕竟定义一个 Head 节点，并且前后处理两次，十分繁杂，而且[[Higher-Order Function|Do not repeat yourself]].
 
 ```c
 Node* inTheader(Node *root)
@@ -342,4 +342,4 @@ Node* inTheader(Node *root)
 
 # 表达式树、前中后缀表达式
 
-![](IMG-20251213231444123.png)
+![[IMG-20251214150222565.png]]

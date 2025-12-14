@@ -121,7 +121,7 @@ def reduce_health(self, amount):
 There we use slicing, a swallow copy. So that we can have a same list as begin, but the content, `Bee` object is the same one. What we operate to these object will do affect the object in original list. But we just delete the bees in original one so that our iterate will not be influenced.
 ^fxmjvk
 
-All in all, there will not be any problems if it does not have a nested [Mutable Variable](Mutable%20Variable.md), but if so, we should consider whether we want it to refer a same object or not and decide to have a shallow or deep copy.
+All in all, there will not be any problems if it does not have a nested [[Mutable Variable]], but if so, we should consider whether we want it to refer a same object or not and decide to have a shallow or deep copy.
 
 
 ---
@@ -145,7 +145,7 @@ not(5 in digits) # True
 '1' in digits # False
 [1, 8] in digits # False
 [1, 2] in [3, [1, 2], 4] # True
-[1, 2] in [3, [1,_2](1,_2.md), 4] # False
+[[1,_2.md|1, 2]], 4] # False
 ```
 4. A string is different from an integer.
 5. `in` is used to find an individual element, not subsequence. So it is a simply operator, doesn't search for everything that matches, but goes element by element and sees whether is equal to what it is looking for.
@@ -156,7 +156,7 @@ digits[-2] # 2
 6. Select a negative index is valid, which mean count from the end and begin with -1
 # Manipulate or Iterate over Subsequences
 ## For Statement
-_**[For statement](Control%20Statement.md) is used to help us manipulate or iterate over subsequences.**_ ^2bi6wh
+_**[[Control Statement|For statement]] is used to help us manipulate or iterate over subsequences.**_ ^2bi6wh
 ### Unpacking
 Works with a sequence of **fixed-length sequences**
 ```python
@@ -197,6 +197,6 @@ odd = [1, 3, 5, 7, 9]
 odd[1: 3] # [3, 5]
 ```
 - The start and end all can be omitted and will be defaulted to the very beginning(or end).
-- _**It is not [swallow copy](#ATTENTION_Multiplying_a_List_Will.md).**_ When slicing, there's actually a new list be created and when we change the new one, old one will not be influenced.
+- _**It is not [[#ATTENTION_Multiplying_a_List_Will.md|swallow copy]].**_ When slicing, there's actually a new list be created and when we change the new one, old one will not be influenced.
 
 # 

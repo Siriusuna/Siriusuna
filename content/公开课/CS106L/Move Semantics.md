@@ -1,38 +1,38 @@
 # L-Value and R-Value
-![](IMG-20251214143540250.png)
-![](IMG-20251214143540280.png)
+![[IMG-20251214150149887.png]]
+![[IMG-20251214150149964.png]]
 
-![](IMG-20251214143540308.png)
-![](IMG-20251214143540341.png)
-![](IMG-20251214143540372.png)
+![[IMG-20251214150149997.png]]
+![[IMG-20251214150150036.png]]
+![[IMG-20251214150150083.png]]
 
 # Move Semantics
-![](IMG-20251214143540411.png)
+![[IMG-20251214150150120.png]]
 ## Move Constructor
-![](IMG-20251214143540440.png)
-![](IMG-20251214143540468.png)
-![](IMG-20251214143540494.png)
+![[IMG-20251214150150153.png]]
+![[IMG-20251214150150188.png]]
+![[IMG-20251214150150229.png]]
 _**When possible, steal it rather than copying.**_
 
 ## Move Assignment
-[Another `=` overloading.](Operator%20Overloading.md)
+[[Operator Overloading|Another `=` overloading.]]
 
-![](IMG-20251214143540537.png)
-![](IMG-20251214143540569.png)
+![[IMG-20251214150150278.png]]
+![[IMG-20251214150150312.png]]
 _**Still imperfect, it does some copy, with `=`**_
-![](IMG-20251214143540598.png)
+![[IMG-20251214150150354.png]]
 L-Value! It has name and identity. Although `rhs` is a R-Value reference, but the variable `rhs` itself is a L-Value.
-![](IMG-20251214143540625.png)
+![[IMG-20251214150150388.png]]
 
 ## The Final Code:
-![](IMG-20251214143540654.png)
+![[IMG-20251214150150424.png]]
 
 # Summary: Rules
-![](IMG-20251214143540687.png)
-![](IMG-20251214143540717.png)
+![[IMG-20251214150150454.png]]
+![[IMG-20251214150150502.png]]
 # More Modern
-![](IMG-20251214143540748.png)
-![](IMG-20251214143540777.png)
+![[IMG-20251214150150575.png]]
+![[IMG-20251214150150610.png]]
 
 # Universal Reference
-![](IMG-20251214143540808.png)
+![[IMG-20251214150150645.png]]

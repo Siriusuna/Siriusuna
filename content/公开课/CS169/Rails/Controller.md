@@ -1,25 +1,25 @@
-# [Routes](RESTful%20Resources%20Routes%20in%20Rails.md)
+# [[RESTful Resources Routes in Rails|Routes]]
 # Redirection, the Flash and the Session
 
-![](IMG-20251213231152472.png)
+![[IMG-20251214150156169.png]]
 
 Code:  
-![](IMG-20251213231152680.png)
+![[IMG-20251214150156209.png]]
 > If we use `redirect_to new_movies_path` instead of `render :new` in `create` method, what user filled in formerly will fade away.
 
 The `@movie = Movie.new` in `new` is used to render the view.
 # Dealing with Forms
-![](IMG-20251213231153620.png)
+![[IMG-20251214150156257.png]]
 
-![](IMG-20251213231154790.png)
+![[IMG-20251214150156303.png]]
 
 ## Strong Parameters
 The controller decides which form field parameters are allowed to be passed to the model for update/create...why?
 
-![](IMG-20251213231155830.png) ^9gx3ke
+![[IMG-20251214150156337.png]] ^9gx3ke
 
-_**[Old-school, check for new version](MVC.md)**_
+_**[[MVC.md|Old-school, check for new version]]**_
 # Summary
-![](IMG-20251213231156747.png)
-![](IMG-20251213231157651.png)
-![](IMG-20251213231158486.png)
+![[IMG-20251214150156396.png]]
+![[IMG-20251214150156445.png]]
+![[IMG-20251214150156493.png]]

@@ -61,7 +61,7 @@ Tips:
 - If we change the size of dictionary, add or pop some pairs, our iterator will can not be used anymore, unless we create a new one.
 - On the other hand if we just change the values of keys, it does not matter.
 
-# [For Statement](Control%20Statement.md)
+# [[Control Statement|For Statement]]
 
 _**For statement also move the marker within an iterator, advancing it all the way to the end of the sequence.**_
 

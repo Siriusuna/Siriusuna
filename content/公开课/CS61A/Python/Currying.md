@@ -1,6 +1,6 @@
 _**Transforming a multi-argument function into a single-argument, higher-order function.**_
 
-As we know, when we evaluate, [we evaluate the operator first](Expression.md).
+As we know, when we evaluate, [[Expression|we evaluate the operator first]].
 ```python
 add_maker(1)(2)
 ```

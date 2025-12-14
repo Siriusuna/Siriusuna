@@ -1,14 +1,14 @@
 _**The interpreter is a program that take as input the code in a programming language and execute that code in order to create the behavior described by the program.**_
 
-![](IMG-20251214140740692.png)
+![[IMG-20251214150202932.png]]
 # Metalinguistic Abstraction
-![](IMG-20251214140740722.png)
+![[IMG-20251214150203033.png]]
 
 # Parsing
 _**Parsing is the process of taking text input which represent a computer program or some other formal language expressions, and turns them into some sort of objects that represent the expressions and while validating its syntax.**_
 
 A parser takes text and returns an expression.
-![](IMG-20251214140740833.png)
+![[IMG-20251214150203059.png]]
 
 ## Recursive Syntactic Analysis
 
@@ -24,7 +24,7 @@ The key idea is that we make predictions about which grammar rule to apply next 
 What it does is to identifies the hierarchical structure of an expression, which may be nested.  
 Each call to `scheme_read` consumes the input tokens for exactly one expression.
 
-### [Mutual Recursion](Recursive%20Functions.md)
+### [[Recursive Functions|Mutual Recursion]]
 ```python
 def scheme_read(src):
     """Read the next expression from src, a Buffer of tokens.
@@ -64,4 +64,4 @@ def read_tail(src):
     rest = read_tail(src)
     return Pair(first, rest)
 ```
-The Pair Class: [Here!](Calculator.md)
+The Pair Class: [[Calculator|Here!]]

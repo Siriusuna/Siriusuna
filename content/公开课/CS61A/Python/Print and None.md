@@ -14,7 +14,7 @@ The special value represents nothing.
 If a function does not explicit return something, it returns `None`.
 
 
-## About [Return](Return.md):
+## About [[Return]]:
 #### Pure Functions:
 _just return values._
 #### Non-Pure Functions:

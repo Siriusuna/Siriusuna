@@ -1,14 +1,14 @@
-![](IMG-20251214143504846.png)
-![](IMG-20251214143504890.png)
-![](IMG-20251214143504944.png)
+![[IMG-20251214150145797.png]]
+![[IMG-20251214150145834.png]]
+![[IMG-20251214150145865.png]]
 `multimap` 和 `multiset` 是 C++ 标准库 (STL) 中的两种**有序关联容器**，它们是 `map` 和 `set` 的“多重 (multi)”版本。(允许重复)
 
 # Which to Use?
-![](IMG-20251214143504985.png)
+![[IMG-20251214150145896.png]]
 
 # Map
-![](IMG-20251214143505025.png)
-![](IMG-20251214143505078.png)
+![[IMG-20251214150145935.png]]
+![[IMG-20251214150145962.png]]
 A faster one
 ```cpp
 auto i = std::find(m.begin(), m.end(), elemToFind);
@@ -38,13 +38,13 @@ int main()
     return 0;
 }
 ```
-![](IMG-20251214143505118.png)
+![[IMG-20251214150145994.png]]
 
 # Set
-![](IMG-20251214143505147.png)
+![[IMG-20251214150146039.png]]
 
 # Multimap
-![](IMG-20251214143505175.png)
+![[IMG-20251214150146068.png]]
 ```cpp
 auto range = scores.equal_range("Alice");
 for (auto it = range.first; it != range.second; ++it) {

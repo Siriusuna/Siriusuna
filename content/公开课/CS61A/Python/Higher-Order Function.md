@@ -1,4 +1,4 @@
-### We have learnt [Print and None](Print%20and%20None.md).
+### We have learnt [[Print and None]].
 
 ### Characteristic of Function
 - **Domain**: The set of all inputs it might possibly take as arguments.  
@@ -63,7 +63,7 @@ def add_maker(n):
 		return n + k
 	return adder
 ```
-_**This is [Nested Function](Environment.md).**_ 
+_**This is [[Environment|Nested Function]].**_ 
 
 when it return itself:
 ```python
@@ -79,7 +79,7 @@ def print_sums(n):
 		return print_sums(n+k) 
 	return next_sum
 ```
-This is [Self-Reference](Self-Reference.md).
+This is [[Self-Reference]].
 ### The Purpose
   
 **_Functions are first-class:_**  
@@ -89,9 +89,9 @@ _**Higher - order function:**_
 - A function that takes a function as an argument value or returns a function as a return value 
 
 Higher - order functions: 
-- [Separate concerns](Higher-Order%20Function.md#Give_each_function_exactly_one_job..md) among functions
-- [Remove repetition](#Don’t_repeat_yourself_**(DRY)**._Implement_a_process_just_once,_but_execute_it_many_times..md) from programs 
-- [Express general methods of computation](#Define_functions_generally..md) 
+- [[Higher-Order Function#Give_each_function_exactly_one_job..md]] among functions
+- [[#Don’t_repeat_yourself_**(DRY|Remove repetition]]**._Implement_a_process_just_once,_but_execute_it_many_times..md) from programs 
+- [[#Define_functions_generally..md|Express general methods of computation]] 
 
 ## Practice: Newton's Method
 ```python
@@ -150,7 +150,7 @@ trace(triple)(12)
 
 _**So a decorator: A function with a function as argument and a wrapped function in it.**_ 
 
-### [OOP](Object-Oriented%20Programming(OOP).md) and Decorators
+### [[Object-Oriented Programming(OOP|OOP]].md) and Decorators
 ```python
 def transact(f):
     def register(self, amount):
@@ -190,5 +190,5 @@ We would like to write a function that accepts an arbitrary number of arguments,
 
 _**That is:**_ We can call the function passed as an argument in the higher order function, although we are not sure what function will be passed in and how many arguments it needs.
 
-### \*[List](List.md)
+### \*[[List]]
 If we don't know the exact number of arguments, use `*args` notation: `f(1, 2, 3)` is equivalent to `f(*[1, 2, 3]`), but it is different from `f([1, 2, 3])`, which passed in a list, not a group of numbers.

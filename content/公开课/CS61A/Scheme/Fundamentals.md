@@ -9,7 +9,7 @@ Scheme programs consist of expressions, which can be:
 Numbers are self-evaluating; symbols are bound to values  
 Call expressions include an operator and 0 or more operands in parentheses
 
-![](IMG-20251213231144013.png)
+![[IMG-20251214150204207.png]]
 
 question mark:
 ```scheme
@@ -65,7 +65,7 @@ So we can create a recursive procedure in Scheme.
 		2. Return the value of last expression.
 - `let` special form: bind symbols to values temporarily(just for one expression)
 	- `(let ((<symbol> <expression>) (<symbol> <expression>)...<body>))`
-![](IMG-20251213231144332.png)
+![[IMG-20251214150204317.png]]
 # Lambda Expressions
 _**Lambda expressions evaluate to anonymous procedure.**_
 
@@ -119,7 +119,7 @@ _**Linked list.**_ ^2gccw8
 - `cdr`: Procedure that returns the rest of a list  
 - `nil`: The empty list
 - `list`: Create a list, shorthand of `(cons ... (cons ... (...)))`
-![](IMG-20251213231144347.png) 
+![[IMG-20251214150204345.png]] 
 
 # Macros
 _**Macros allow us to define new special forms in the language.**_  

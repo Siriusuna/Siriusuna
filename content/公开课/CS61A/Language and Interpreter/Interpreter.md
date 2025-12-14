@@ -1,7 +1,7 @@
 # The Structure of an Interpreter
-![](IMG-20251214140740687.png)
+![[IMG-20251214150202867.png]]
 
-# [Special Forms](Fundamentals.md)
+# [[Fundamentals|Special Forms]]
 
 The scheme_eval function dispatches on expression form:
 - Symbols are bound to values in the current environment.
@@ -35,9 +35,9 @@ _**The quote special form evaluates to the quoted expression, which is <font col
 ## The `lambda` Special Form
 _**Lambda expressions evaluate to user-defined procedures.**_
 
-![](IMG-20251214140740715.png)
+![[IMG-20251214150202890.png]]
 
-### [Frame and Environment](Environment.md)
+### [[Environment|Frame and Environment]]
 _**A frame represents an environment by having a parent frame.**_
 
 Frames are python instances with methods **lookup** and **define**.
@@ -48,7 +48,7 @@ Frames are python instances with methods **lookup** and **define**.
 	- `(define <name> <expression>)`
 		1. Evaluate the `<expression>`.
 		2. Bind `<name>` to its value in the current frame.
-2. Procedure definition is shorthand of [define with a lambda expression](Fundamentals.md#^3c57gc.md). They should be handled in the same way.
+2. Procedure definition is shorthand of [[Fundamentals#^3c57gc.md]]. They should be handled in the same way.
 ```scheme
 (define (<name> <formal parameters>) <body>)  
 (define <name> (lambda (<formal parameters>) <body>)
@@ -62,4 +62,4 @@ To apply a user-defined procedure, create a new frame in which formal parameters
 
 Evaluate the body of the procedure in the environment that starts with this new frame.
 
-![](IMG-20251214140740808.png)
+![[IMG-20251214150202911.png]]

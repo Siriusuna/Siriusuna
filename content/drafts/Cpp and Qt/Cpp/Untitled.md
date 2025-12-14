@@ -15,7 +15,7 @@ int g = 20;
 ```
 
 # Casting
-![](IMG-20251214140712300.png)
+![[IMG-20251214150140710.png]]
 ```cpp
 struct Base { virtual ~Base(){} };
 struct Derived : Base { int x; };
@@ -36,11 +36,11 @@ long addr = reinterpret_cast<long>(b);
 ```
 
 # Const and Mutable
-![](IMG-20251214140712414.png)
+![[IMG-20251214150140734.png]]
 
 # Copy
-![](IMG-20251214140712581.png)
+![[IMG-20251214150140760.png]]
 
 # `typename` and `class`
-![](IMG-20251214140712746.png)
-![](IMG-20251214140712927.png)
+![[IMG-20251214150140793.png]]
+![[IMG-20251214150140818.png]]

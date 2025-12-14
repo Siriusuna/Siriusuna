@@ -1,5 +1,5 @@
 # Two Tool
-- [Data Abstraction](Data%20Abstraction.md)
+- [[Data Abstraction]]
 - "Design for change"(Modularize, changes on every piece will not affect rest of system):
 	- Organize program around object.
 	- Let objects decide how things are done.
@@ -8,7 +8,7 @@
 # Module
 _**A set of methods that work together as a whole to perform some task or set of related tasks.**_  
 _**A module is said to be encapsulated if its implementation is completely hidden, and it can be accessed only through a documented interface.**_
-![](IMG-20251214141113648.png)
+![[IMG-20251214150212123.png]]
 
 Java is a great language for enforcing abstraction barriers with syntax.
 

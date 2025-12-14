@@ -11,7 +11,7 @@ In imperative languages such as Python & Scheme:
 _**Database is a collection of tables where we put our data. DBMS helps us keep track of those tables, creating, deleting or making updates.**_  
 
 A table is a collection of records, which are rows that have a value for each column.
-![](IMG-20251213231144016.png)
+![[IMG-20251214150203372.png]]
 
 A database can have multiple different tables with different structure.
 
@@ -28,7 +28,7 @@ The `WHERE`, `GROUP BY`, `HAVING`, and `ORDER BY` clauses are optional.
 
 ## Introduction
 
-![](IMG-20251213231144403.png)
+![[IMG-20251214150203399.png]]
 
 The SQL language is an ANSI and ISO standard, but DBMS's implement custom variants  
 - A `select` statement creates a new table, either **from scratch** or **by projecting a table**  
@@ -51,7 +51,7 @@ Selecting literals creates a one-row table
 The `union` of two `select` statements is a table containing the rows of both of their results.(No guarantee about the order)
 > (They must have the same number of columns and the same type of each column, but the same name is not necessary, the first name will be used as the name of column)
 
-![](IMG-20251213231144421.png)
+![[IMG-20251214150203431.png]]
 
 ## Naming Tables
 
@@ -62,7 +62,7 @@ A `create table` statement gives the result a name
 ```sql
 create table [name] as [select statement];
 ```
-![](IMG-20251213231144638.png)
+![[IMG-20251214150203459.png]]
 
 ## Projecting Tables
 
@@ -73,7 +73,7 @@ Column descriptions determine how each input row is projected to a result row
 
 `select [expression] as [name], [expression] as [name], ...;` all of these arguments are belong to `[columns]`, the full version is:  
 `select [columns] from [table] where [condition] order by [order];`
-![](IMG-20251213231144762.png)
+![[IMG-20251214150203486.png]]
 
 > `*` is the shorthand of all the rows.
 
@@ -82,14 +82,14 @@ Column descriptions determine how each input row is projected to a result row
 In a select expression, column names evaluate to row values  
 Arithmetic expressions can combine row values and constants
 
-![](IMG-20251213231144779.png)
+![[IMG-20251214150203530.png]]
 
 
 # Joining Tables
 
 Two tables A & B are joined by a _comma_ to yield all combos of a row from A & a row from B.
 
-![](IMG-20251213231144838.png)
+![[IMG-20251214150203639.png]]
 
 ```sql
 select * from parents, dogs
@@ -102,13 +102,13 @@ The joint will exhaust all the pairs of rows and it is up to `where` clause to d
 ## Aliases and Dot Expressions
 _**Some time, two different tables have the same column name, aliases and dot expressions can disambiguate column values.**_
 
-![](IMG-20251213231144867.png)
+![[IMG-20251214150203675.png]]
 (We use "<" because so that it will not repeat.)
 
 So that we can join a table with itself.
 
 ## Joining Multiple Tables
-![](IMG-20251213231144902.png)
+![[IMG-20251214150203707.png]]
 
 # Numerical Expressions
 
@@ -146,7 +146,7 @@ Above this, all SQL expressions have referred to the values in a single row at a
 
 An aggregate function in the `[column]` clause computes a value from a group of rows.
 
-![](IMG-20251213231144935.png)
+![[IMG-20251214150203736.png]]
 
 - `max` is an aggregate function which take the "legs" column value of all the rows.
 - `min`
@@ -178,7 +178,7 @@ select [columns] from [tables] group by [expression] having [expression];
 ### `group`
 The number of groups is the number of unique values of an expression.
 
-![](IMG-20251213231144963.png)
+![[IMG-20251214150203767.png]]
 
 More examples:
 ```sql
@@ -196,7 +196,7 @@ A `having` clause filters the set of groups that are aggregated.
 
 `where` is to filter individual rows, but `having` clause can even include aggregation itself.
 
-![](IMG-20251213231144992.png)
+![[IMG-20251214150203798.png]]
 
 ```sql
 CREATE TABLE low_variance AS
@@ -220,12 +220,12 @@ This has no meaning! We do not know which row will be chosen to compare with ave
 # Create Table and Drop Table
 
 ## Create
-We can already create a table using [create as](#Naming_Tables.md) statement.
+We can already create a table using [[#Naming_Tables.md|create as]] statement.
 There's an alternative way that can create an empty table.
 
-![](IMG-20251213231145019.png)
+![[IMG-20251214150203835.png]]
 
-![](IMG-20251213231145054.png)
+![[IMG-20251214150203871.png]]
 
 Example:
 ```sql
@@ -235,11 +235,11 @@ CREATE TABLE numbers (n, note DEFAULT "No comment");
 ```
 
 ## Drop
-![](IMG-20251213231145082.png)
+![[IMG-20251214150203992.png]]
 
 # Modifying Tables
 ## Insert
-![](IMG-20251213231145112.png)
+![[IMG-20251214150204024.png]]
 For a table t with two columns...  
 To insert into one column:  
 ```sql
@@ -253,15 +253,15 @@ INSERT INTO t VALUES (value0, value1);
 ```
 
 Example:
-![](IMG-20251213231145138.png)
+![[IMG-20251214150204060.png]]
 
 ## Update
-![](IMG-20251213231145169.png)
+![[IMG-20251214150204090.png]]
 
 Update sets all entries in certain columns to new values, just for some subset of rows.
 
 ## Deleting
-![](IMG-20251213231145199.png)
+![[IMG-20251214150204120.png]]
 
 Without `where`, we will delete all the rows, but the table will still exist, not equivalent to `drop`.
 
@@ -274,7 +274,7 @@ _**A python program can construct and then execute SQL statements.**_
 	1. `execute(<SQL statement>)`
 		- It can combine with python.
 		- `db.execute("INSERT INTO nums VALUE (?),(?),(?);",range(4,7))`
-		- `"SELECT ..."` will return a cursor object which has a method called `fetchall` which will fetch the contents of the result table as [a list of](List.md)[tuples](Tuple.md).
+		- `"SELECT ..."` will return a cursor object which has a method called `fetchall` which will fetch the contents of the result table as [[List|a list of]][[Tuple|tuples]].
 		- Take one statement.
 	2. `executescript()`
 		- Take as many statements as we want and execute them all.
@@ -282,7 +282,7 @@ _**A python program can construct and then execute SQL statements.**_
 		- It commits the modification to the database.
 
 ## SQL Injection Attack
-![](IMG-20251213231145227.png)
+![[IMG-20251214150204174.png]]
 
 _**How to prevent?**_
 ```python

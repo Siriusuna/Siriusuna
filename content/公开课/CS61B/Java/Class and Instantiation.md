@@ -1,17 +1,17 @@
 - Every method is associate with some class. Every file contains a class.
 - To run a class, we must define a main method.
 	- Not all the classes have a main method!(But we can have a test drive class for it.)
-![](IMG-20251214141055742.png)
-(Dependent files will be [Compile](Compile.md)d automatically.)
+![[IMG-20251214150211963.png]]
+(Dependent files will be [[Compile]]d automatically.)
 # Terminology
-![](IMG-20251214141055783.png)
-1. Instance variable: [instance attribute](Object-Oriented%20Programming(OOP).md).
-2. [Constructor](Data%20Abstraction.md)(name should be same as class name).
-3. [Non-static method or static method](#Static_and_Non-Static.md): Belong to instance or class.
+![[IMG-20251214150211991.png]]
+1. Instance variable: [[Object-Oriented Programming(OOP|instance attribute]].md).
+2. [[Data Abstraction|Constructor]](name should be same as class name).
+3. [[#Static_and_Non-Static.md|Non-static method or static method]]: Belong to instance or class.
 
-![](IMG-20251214141055808.png)
+![[IMG-20251214150212018.png]]
 
-![](IMG-20251214141055835.png)
+![[IMG-20251214150212043.png]]
 4. To create an array of objects:  
 	- First use the `new` keyword to create the array.  
 	- Then use `new` again for each object that you want to put in the array.
@@ -19,7 +19,7 @@
 （By the way,when defining an array, the length could be a variable.）
 
 # Static and Non-Static
-![](IMG-20251214141055858.png)
+![[IMG-20251214150212068.png]]
 A class may have a mix of static and non-static **members**.
 
 - A variable or method defined in a class is also called a member of that class.

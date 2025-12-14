@@ -1,6 +1,6 @@
 _**A linked list is either empty of a first value and the rest of the linked list.**_
 
-![](IMG-20251214140811556.png)
+![[IMG-20251214150203202.png]]
 
 # Linked List Processing
 ```python
@@ -44,7 +44,7 @@ def filter_link(f, s):
 ```
 
 # Linked Lists Mutation
-![](IMG-20251214140811602.png)
+![[IMG-20251214150203224.png]]
 
 ```python
 class Link:

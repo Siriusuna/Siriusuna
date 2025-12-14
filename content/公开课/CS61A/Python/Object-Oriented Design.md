@@ -17,8 +17,8 @@ And we'd better use it instead of copy and paste so that we can keep consistent.
 And the third principle, we'd better to write `self.withdraw_fee` instead of `CheckingAccount.withdraw_fee`, in case that some instance may have a special withdraw_fee.(Either for further subclasses or giving an instance attribute to particular accounts.)  
 By the way, we cannot write `withdraw_fee` only, because the withdraw_fee above appears as an attribute and if we use it directly, it is undefined.
 
-[Decomposition](Decomposition.md) and modularization.
-# [Inheritance](Inheritance.md) and Composition
+[[Decomposition]] and modularization.
+# [[Inheritance]] and Composition
 _**Object - oriented programming shines when we adopt the metaphor.**_  
 
 - Inheritance is best for representing _**is-a**_ relationships.  
@@ -51,7 +51,7 @@ class Bank:
 ```
 
 a little more complicated example:
-![](IMG-20251214140830734.png)
+![[IMG-20251214150203320.png]]
 We should remember that: 
 - When we create a new instance, we will call `__init__` first if it or one of its base class has one. So when `C` and `B` is created, `__init__` will be call while `A`'s instance will not.  
 - When we call `__init__`, no matter which class this `__init__` method is belong to, the `self`'s class is what our instance is belong to, thus we look up its attribute from this class. So when we call `C(1)`, we call `__init__` in class `B`, and assign `self.z = self.f(y)`, the `f` there should be found in class `C` rather than from `B` and found in `A`.

@@ -7,7 +7,7 @@
 ```
 
 # Feature
-_**String is a [Container](Container.md), too.**_
+_**String is a [[Container]], too.**_
 - `len`
 - Element selection expression. And an element of it is still string, like 'a', '0' and so on.
 - `in` and `not in`. They can be used to match substring.

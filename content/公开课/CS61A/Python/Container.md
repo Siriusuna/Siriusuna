@@ -1,8 +1,8 @@
-1. [List](List.md)
-2. [String](String.md)
-3. [Dictionary](Dictionary.md)
-4. [Tuple](Tuple.md)
-5. [Set](Set.md)
+1. [[List]]
+2. [[String]]
+3. [[Dictionary]]
+4. [[Tuple]]
+5. [[Set]]
 
 # Sequence Aggregation
 _**Several built-in functions take iterable arguments and aggregate them into a value**_

@@ -1,4 +1,4 @@
-_**[Tree](Tree.md) is an important [Data Abstraction](Data%20Abstraction.md) for representing hierarchical relationships.**_
+_**[[Tree]] is an important [[Data Abstraction]] for representing hierarchical relationships.**_
 
 There we will consider a tree in a different perspective.
 
@@ -14,7 +14,7 @@ Each node has a label that can be any value
 One node can be the parent/child of another
 
 **People often refer to labels by their locations**
-![](IMG-20251213231144011.png)
+![[IMG-20251214150203346.png]]
 # Constructor
 ```python
 def tree(label, branches=[]):
@@ -87,7 +87,7 @@ def print_tree(t, indent=0):
     
 ```
 
-There's another type of [Recursive Functions](Recursive%20Functions.md), sometimes handy.
+There's another type of [[Recursive Functions]], sometimes handy.
 ```python
 def print_sums(t, so_far):
     so_far = so_far + label(t)
@@ -98,7 +98,7 @@ def print_sums(t, so_far):
             print_sums(b, so_far) 
 ```
 
-# [Tree Class](Object-Oriented%20Programming(OOP).md)
+# [[Object-Oriented Programming(OOP|Tree Class]].md)
 ```python
 class Tree:
     """A tree is a label and a list of branches."""

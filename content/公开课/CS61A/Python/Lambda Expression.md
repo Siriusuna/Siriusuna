@@ -1,4 +1,4 @@
-_**Lambda expressions are the expressions evaluate to [functions](Higher-Order%20Function.md).**_
+_**Lambda expressions are the expressions evaluate to [[Higher-Order Function|functions]].**_
 
 ```python
 square = lambda x : x * x

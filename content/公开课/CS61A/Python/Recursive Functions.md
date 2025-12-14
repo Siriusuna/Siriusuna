@@ -59,14 +59,14 @@ That is: From updates via assignment to arguments to a recursive call.
 # The Order of Recursive Call
 _**When you make a function call, you have to wait for it to return before you can anything else.**_
 
-# [Tree](Trees.md) Recursion
+# [[Trees|Tree]] Recursion
 _**whenever executing the body of a recursive function makes more than one recursive call to that function.**_  
 
 The process of executing is a post-order traversal of a tree.  
 It often involves exploring choices.
 
 ---
-If you need to keep track of more than one value across recursive calls, consider writing [a helper function](Higher-Order%20Function.md).
+If you need to keep track of more than one value across recursive calls, consider writing [[Higher-Order Function|a helper function]].
 E.g.
 ```python
 def interleaved_sum(n, odd_func, even_func):
@@ -91,7 +91,7 @@ def fact(n):
 	return n * fact(n - 1)
 ```
 
-###### Build up result by pass information into the recursive call as an argument or with [nonlocal variable](Mutable%20Function.md).
+###### Build up result by pass information into the recursive call as an argument or with [[Mutable Function|nonlocal variable]].
 ```python
 def fact(n, k = 1)
 	if not n:
@@ -99,7 +99,7 @@ def fact(n, k = 1)
 	else:
 		return fact(n - 1,k * n)
 ```
-Another example: [Trees](Trees.md): `print_sum`
+Another example: [[Trees]]: `print_sum`
 
 Both are useful and convenient in some situation.
 

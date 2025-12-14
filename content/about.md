@@ -9,7 +9,7 @@ summary: ここはどこ？
 # 关于我
 <div class="about-container">
     <div class="profile-wrapper">
-        <img src="https://siriusuna.top/static/avatars/Siriusuna.png" alt="My Avatar" width=300 height=300/>
+        <img src="https://siriusuna.top/static/avatars/Siriusuna.png" alt="My Avatar" width=300 height=auto/>
         <div class="author-credit">原作者: <a href="https://x.com/ICHIZEN_RYUU2" target="_blank">ICHIZEN-RYUU</a></div>
     </div>
     <blockquote class="lyrics">
@@ -71,7 +71,7 @@ summary: ここはどこ？
 
 我尤其喜欢日本的文学作品, 尤其喜欢[川端康成](https://zh.wikipedia.org/wiki/%E5%B7%9D%E7%AB%AF%E5%BA%B7%E6%88%90), 大大小小的作品都读过很多, 从《雪国》,《伊豆的舞女》,《睡美人》,《藤花与草莓》等等, 我最喜欢的是《古都》, 我尤其向往书中的那个古朴而传统的城镇, 因此***我向往着京都***.  
 说到京都, 那么不得不提[三岛由纪夫](https://zh.wikipedia.org/wiki/%E4%B8%89%E5%B2%9B%E7%94%B1%E7%BA%AA%E5%A4%AB)了. 我尤其喜欢《金阁寺》, 说实话, 我也没见过金阁. 即使互联网这么发达, 我也想过去搜索一张图片看看, 甚至可以说是避开可能的一瞥吧. 因为如此这般, 金阁便“***无处不在，而在现实里又一无所见***”, 其是我梦想孕育的产物, 我应该亲眼去看见他.  
-所以, “金阁仍然是美的”... [我的梦想](#关于梦想)由此产生.
+所以, “金阁仍然是美的”... [[#关于梦想|我的梦想]]由此产生.
 私小说我也会看, "小说之神"[志贺直哉](https://zh.wikipedia.org/wiki/%E5%BF%97%E8%B4%BA%E7%9B%B4%E5%93%89)的作品我尤其喜欢, 说到底我萌发写作的想法, 还是因为他的私小说, 直击我心底但又平实, 似乎我也想过, 我能写出来一样. 可以说这是我未来习作的动力来源了.
 
 别的作品我也会看, 各种各样的, 这便没什么偏好了. 只是一到紧急的时候, 感到不安的时候, 我就反而会安静下来, 想看一看书.  
