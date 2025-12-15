@@ -2,7 +2,7 @@
 title: 🪢 友链
 created: 2025-12-13
 published: 2025-12-13
-modified: 2025-12-15
+modified: 2025-12-16
 tags:
   - 介绍
   - 友链
@@ -65,7 +65,7 @@ summary: Siriusuna 的友站
 🎆 在此附上我的个人信息:
 
 ```md
-sitename: シリウスナ
+sitename: Siriusuna
 url: https://siriusuna.top
 info: 光続けば、いつかは終わる定めなのだけれど...
 avatar: https://siriusuna.top/static/avatars/Siriusuna.png
