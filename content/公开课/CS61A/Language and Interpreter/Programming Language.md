@@ -1,14 +1,14 @@
 _**The interpreter is a program that take as input the code in a programming language and execute that code in order to create the behavior described by the program.**_
 
-![[IMG-20251214150202932.png]]
+![[IMG-20251216005824870.png]]
 # Metalinguistic Abstraction
-![[IMG-20251214150203033.png]]
+![[IMG-20251216005824928.png]]
 
 # Parsing
 _**Parsing is the process of taking text input which represent a computer program or some other formal language expressions, and turns them into some sort of objects that represent the expressions and while validating its syntax.**_
 
 A parser takes text and returns an expression.
-![[IMG-20251214150203059.png]]
+![[IMG-20251216005824963.png]]
 
 ## Recursive Syntactic Analysis
 
