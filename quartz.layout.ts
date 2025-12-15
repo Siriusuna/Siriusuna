@@ -15,10 +15,13 @@ export const sharedPageComponents: SharedLayout = {
     //     categoryId: "DIC_kwDOQmO3Q84Czr7z",
     //   },
     // }),
-    Component.WalineComment({
-      serverUrl: "https://waline.siriusuna.top",
-      lang: "zh-CN",
-    }),
+      Component.WalineComment({
+          serverUrl: "https://waline.siriusuna.top",
+          lang: "zh-CN",
+          emoji: [
+              "https://unpkg.com/@waline/emojis@1.4.0/tieba"
+          ]
+      }),
   ],
   footer: Component.Footer({
     links: {
