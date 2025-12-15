@@ -6,22 +6,22 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    // Component.Comments({
-    //   provider: "giscus",
-    //   options: {
-    //     repo: "Siriusuna/Siriusuna",
-    //     repoId: "R_kgDOQmO3Qw",
-    //     category: "Announcements",
-    //     categoryId: "DIC_kwDOQmO3Q84Czr7z",
-    //   },
-    // }),
-    Component.WalineComment({
-      serverUrl: "https://waline.siriusuna.top",
-      lang: "zh-CN",
-      reaction: true,
-      pageview: true,
-      comment: true,
+    Component.Comments({
+      provider: "giscus",
+      options: {
+        repo: "Siriusuna/Siriusuna",
+        repoId: "R_kgDOQmO3Qw",
+        category: "Announcements",
+        categoryId: "DIC_kwDOQmO3Q84Czr7z",
+      },
     }),
+    // Component.WalineComment({
+    //   serverUrl: "https://waline.siriusuna.top",
+    //   lang: "zh-CN",
+    //   reaction: true,
+    //   pageview: true,
+    //   comment: true,
+    // }),
   ],
   footer: Component.Footer({
     links: {
