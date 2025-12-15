@@ -100,11 +100,6 @@ export default (() => {
         <link rel="stylesheet" href="https://fontsapi.zeoseven.com/442/main/result.css" />
 
         <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet"></link>
-            
-        {/* <link
-        rel="stylesheet"
-        href="https://unpkg.com/@waline/client@v3/dist/waline.css"
-        /> */}
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

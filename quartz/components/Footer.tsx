@@ -13,7 +13,7 @@ export default ((opts?: Options) => {
     const links = opts?.links ?? []
       return (
       <footer class={`${displayClass ?? ""}`}>
-        <script src="https://giscus.app/client.js"
+        {/* <script src="https://giscus.app/client.js"
                 data-repo="Siriusuna/Siriusuna"
                 data-repo-id="R_kgDOQmO3Qw"
                 data-category="Announcements"
@@ -27,7 +27,7 @@ export default ((opts?: Options) => {
                 data-lang="zh-CN"
                 crossorigin="anonymous"
                 async>
-        </script>
+        </script> */}
         <p>
           {i18n(cfg.locale).components.footer.createdWith}{" "}
           <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a> © {year}
