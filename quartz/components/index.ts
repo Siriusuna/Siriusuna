@@ -23,6 +23,7 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import WalineComment from "./WalineComment"
 // import SpotifyPlayer from "./SpotifyPlayer"
 // import Friends from "./Friends"
 
@@ -52,6 +53,7 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  WalineComment,
   // SpotifyPlayer,
   //Friends,
 }
