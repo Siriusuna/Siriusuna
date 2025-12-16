@@ -54,6 +54,13 @@ summary: Siriusuna 的友站
     <div class="friend-desc">循此苦旅，以达繁星。</div>
   </div>
 </a>
+<a href="https://virgiling.wiki" class="friend-card">
+  <img src="https://cv.virgiling.wiki/bio.png" class="friend-avatar" />
+  <div>
+    <div class="friend-name">Virgil's Digital Garden</div>
+    <div class="friend-desc">Wonderings of a SAT learner & code rookie</div>
+  </div>
+</a>
 </div>
 
 <div style="text-align: center;">
