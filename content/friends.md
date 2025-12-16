@@ -1,5 +1,5 @@
 ---
-title: 🪢 友链
+title: ❤️ 友链
 created: 2025-12-13
 published: 2025-12-13
 modified: 2025-12-16
