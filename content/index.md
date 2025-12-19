@@ -49,7 +49,7 @@ summary: 一个小小的数字花园(Digital Garden), 在这里分享与记录�
 
 - [Obsidian](https://obsidian.md/), 作为我记笔记的工具, 这些笔记成为了这个网站产生的动机.
 - [Quartz](https://quartz.jzhao.xyz/), 作为本站的框架, 为我最大限度保留笔记完整内容和形式提供巨大助力, 没有这个框架, 本站可能不会存在, 或者至少失去我所爱的这种数字花园的形式, 对我来说是很大的损失.
-- [virgiling | 思想犯](https://virgiling.wiki/), 一位前辈的优秀的博客网站, 为本站搭建提供了很多指导和帮助, 同时也让我觉得 Quartz 有不输给主流博客框架乃至更高的可玩性, 从而下定决心使用这个框架.
+- [Virgil's Digital Garden](https://virgiling.wiki/), 一位前辈的优秀的博客网站, 为本站搭建提供了很多指导和帮助, 同时也让我觉得 Quartz 有不输给主流博客框架乃至更高的可玩性, 从而下定决心使用这个框架.
 - [Xlenco](https://www.xlenco.top/), 为此博客网站提供了[灯箱代码](https://github.com/jackyzha0/quartz/pull/2074/commits).
 - [Waline](https://waline.js.org/), 一款优秀的评论组件, 体验流畅, 功能丰富, 样式美观, 且带有后端和管理功能.
 - [Vercel](https://vercel.com/), Waline 后端部署的平台, 其 Hobby Plan 免费提供服务.
