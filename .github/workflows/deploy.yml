@@ -20,6 +20,10 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.2
+        with:
+          ssh-private-key: ${{ secrets.NOTES_SSH_KEY }}
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Fetch all history for git info
