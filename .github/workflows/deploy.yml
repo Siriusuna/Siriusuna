@@ -20,12 +20,15 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout main repository
+        uses: actions/checkout@v4  # 建议用 v4，目前还没有 v6
         with:
-          fetch-depth: 0 # Fetch all history for git info
+          fetch-depth: 0
           submodules: recursive
-          persist-credentials: false
-          ssh-key: ${{ secrets.NOTES_SSH_KEY }} 
+          ssh-key: ${{ secrets.NOTES_SSH_KEY }}
+          persist-credentials: true # 这里改为 true，以便后续步骤继续使用这个 SSH 权限
+      - name: Update submodules to latest
+        run: git submodule update --remote --recursive
       - uses: actions/setup-node@v6
         with:
           node-version: 22
