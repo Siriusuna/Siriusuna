@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout main repository
-        uses: actions/checkout@v4  # 建议用 v4，目前还没有 v6
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
