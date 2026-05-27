@@ -19,8 +19,8 @@
 }
 
 @font-face {
-  font-family: "YujiMai";
-  src: url("/static/fonts/YujiMai-Regular.woff2") format("woff2");
+  font-family: "Tekitou";
+  src: url("/static/fonts/TekitouPoem.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -74,7 +74,7 @@ body {
 }
 
 .lyrics {
-  font-family: "YujiMai", sans-serif;
+  font-family: "Tekitou", sans-serif;
   font-size: 1.2rem;
   line-height: 1.8;
 }
