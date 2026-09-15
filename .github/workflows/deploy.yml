@@ -1,10 +1,5 @@
 name: Deploy Quartz site to GitHub Pages
 
-# Migration phase: this workflow builds and uploads the artifact but does NOT deploy.
-# The live site is still served from the `siriusuna` (Quartz 4) branch. Once the v5 build
-# has been verified, add the `deploy` job back (see .siriusuna/migration-v4-to-v5.md) and
-# switch the repository's default branch.
-
 on:
   push:
     branches:
@@ -77,3 +72,13 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: public
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
