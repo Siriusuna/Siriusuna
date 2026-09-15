@@ -4,14 +4,26 @@
 
 ```
 origin    git@github.com:Siriusuna/Siriusuna.git      你的仓库
-upstream  https://github.com/jackyzha0/quartz.git     上游 Quartz
+upstream  https://github.com/jackyzha0/quartz.git     上游 Quartz(只读)
 ```
 
-`upstream` 已经配好。确认:
+`upstream` 已经配好,且 **push 地址被故意设成了无效值**,避免手滑往上游推:
+
+```bash
+git remote set-url --push upstream DISABLED_read_only
+```
+
+确认:
 
 ```bash
 git remote -v
 ```
+
+> **`v5` 分支当前追踪的是 `upstream/v5`。** 推到你自己的仓库之后,建议改成追踪 origin:
+>
+> ```bash
+> git push -u origin v5
+> ```
 
 > **注意**:本仓库和上游**没有共同的 git 历史**(最早的 commit 是 `Initialized`,是复制代码后
 > 重新 init 的)。`v5` 分支是直接从 `upstream/v5` 建出来的,所以**从 v5 开始才有共同历史**,
