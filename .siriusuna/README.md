@@ -3,11 +3,15 @@
 这个目录放的是**本站特有**的维护文档。上游 Quartz 没有 `.siriusuna/` 这个路径,所以
 `npx quartz upgrade` 永远不会碰到它、也不会产生冲突。
 
-| 文档                                           | 内容                                              |
-| ---------------------------------------------- | ------------------------------------------------- |
-| [customizations.md](customizations.md)         | 魔改清单:改了什么、在哪、为什么、动了之后要做什么 |
-| [upstream-sync.md](upstream-sync.md)           | 同步上游的标准流程,以及冲突怎么处理               |
-| [migration-v4-to-v5.md](migration-v4-to-v5.md) | 本次 Quartz 4 → 5 迁移的记录、取舍和遗留事项      |
+| 文档                                           | 内容                                               |
+| ---------------------------------------------- | -------------------------------------------------- |
+| [customizations.md](customizations.md)         | 魔改清单:改了什么、在哪、为什么、动了之后要做什么  |
+| [upstream-sync.md](upstream-sync.md)           | 同步上游的标准流程,以及冲突怎么处理                |
+| [migration-v4-to-v5.md](migration-v4-to-v5.md) | 本次 Quartz 4 → 5 迁移的记录、取舍和遗留事项       |
+| [check-static-refs.mjs](check-static-refs.mjs) | 构建后校验所有 `/static/` 引用是否解析得到,CI 会跑 |
+
+根目录的 [`CLAUDE.md`](../CLAUDE.md) 是给 Claude Code 看的精简版:硬性规则、
+常用命令、已知上游坑。改动魔改时,两处都要同步。
 
 ## 最重要的一条规则
 
