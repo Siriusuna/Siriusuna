@@ -32,8 +32,8 @@ v5 把所有 URL 转成小写。**空格转连字符不是新行为**——v4 �
 v5 的 `slugifyFilePath` 新增了文件夹笔记约定:**文件名与父文件夹同名时,该文件变成文件夹索引页**
 (`@quartz-community/utils/dist/path.js`)。受影响的正好 3 个文件:
 
-| v4 URL                      | v5 URL                  |
-| --------------------------- | ----------------------- |
+| v4 URL                    | v5 URL                |
+| ------------------------- | --------------------- |
 | `/公开课/CS169/Ruby/Ruby` | `/公开课/cs169/ruby/` |
 | `/公开课/CS61A/SQL/SQL`   | `/公开课/cs61a/sql/`  |
 | `/公开课/CS61B/Java/Java` | `/公开课/cs61b/java/` |
@@ -67,10 +67,10 @@ RecentNotes     首页/介绍页显示,普通笔记页不显示
 
 ## 待办
 
-- [X] 本地 `npx quartz build --serve` 目视过一遍(尤其暗色模式、移动端布局)
-- [X] push `v5` 分支,确认 CI 构建通过、submodule 正常拉取
-- [ ] ~决定是否给上面那 3 个文件加 aliases~
-- [X] 确认无误后:
+- [x] 本地 `npx quartz build --serve` 目视过一遍(尤其暗色模式、移动端布局)
+- [x] push `v5` 分支,确认 CI 构建通过、submodule 正常拉取
+- [ ] ~~决定是否给上面那 3 个文件加 aliases~~
+- [x] 确认无误后:
   1. 在 `.github/workflows/deploy.yml` 里加回 `deploy` job(见下)
   2. GitHub → Settings → General → Default branch 改成 `v5`
   3. 确认 Notes 仓库的 `repository_dispatch` 仍能触发(workflow 已保留该触发器)
@@ -103,28 +103,28 @@ jobs:
 
 ## v4 → v5 配置对照
 
-| v4                                                              | v5                                                            |
-| --------------------------------------------------------------- | ------------------------------------------------------------- |
-| `Plugin.FrontMatter()`                                        | `@quartz-community/note-properties`                         |
-| `Plugin.CreatedModifiedDate()`                                | `@quartz-community/created-modified-date`                   |
-| `Plugin.SyntaxHighlighting()`                                 | `@quartz-community/syntax-highlighting`                     |
-| `Plugin.ObsidianFlavoredMarkdown()`                           | `@quartz-community/obsidian-flavored-markdown`              |
-| `Plugin.GitHubFlavoredMarkdown()`                             | `@quartz-community/github-flavored-markdown`                |
-| `Plugin.TableOfContents()`                                    | `@quartz-community/table-of-contents`                       |
-| `Plugin.CrawlLinks()`                                         | `@quartz-community/crawl-links`                             |
-| `Plugin.Description()`                                        | `@quartz-community/description`                             |
-| `Plugin.Latex()`                                              | `@quartz-community/latex`                                   |
-| `Plugin.ViewImage()`                                          | `./plugins/sirius-view-image`                               |
-| `Plugin.RemoveDrafts()`                                       | `@quartz-community/remove-draft`                            |
-| `Plugin.AliasRedirects()`                                     | `@quartz-community/alias-redirects`                         |
-| `Plugin.ContentIndex()`                                       | `@quartz-community/content-index`                           |
-| `Plugin.Favicon()`                                            | `@quartz-community/favicon`                                 |
-| `Plugin.ContentPage/FolderPage/TagPage()`                     | `@quartz-community/{content,folder,tag}-page`               |
-| `Plugin.NotFoundPage()`                                       | 核心内置 pageType,无需配置                                    |
-| `Plugin.ComponentResources/Assets/Static()`                   | 核心内置 emitter,无需配置                                     |
-| `Component.Flex({Search, Darkmode, ReaderMode})`              | `layout.group: toolbar` + 顶层 `layout.groups.toolbar`    |
-| `Component.ConditionalRender({condition: slug !== "index"})`  | `layout.condition: not-index`(内置)                         |
-| RecentNotes 的标签条件                                          | `quartz.ts` 里 `registerCondition("sirius-landing-page")` |
-| `defaultContentPageLayout` / `defaultListPageLayout` 的差异 | `layout.byPageType.{folder,tag}`                            |
-| `Component.WalineComment()`                                   | `./plugins/sirius-waline`                                   |
-| `Component.Friends()` / `Component.SpotifyPlayer()`         | 已丢弃                                                        |
+| v4                                                           | v5                                                        |
+| ------------------------------------------------------------ | --------------------------------------------------------- |
+| `Plugin.FrontMatter()`                                       | `@quartz-community/note-properties`                       |
+| `Plugin.CreatedModifiedDate()`                               | `@quartz-community/created-modified-date`                 |
+| `Plugin.SyntaxHighlighting()`                                | `@quartz-community/syntax-highlighting`                   |
+| `Plugin.ObsidianFlavoredMarkdown()`                          | `@quartz-community/obsidian-flavored-markdown`            |
+| `Plugin.GitHubFlavoredMarkdown()`                            | `@quartz-community/github-flavored-markdown`              |
+| `Plugin.TableOfContents()`                                   | `@quartz-community/table-of-contents`                     |
+| `Plugin.CrawlLinks()`                                        | `@quartz-community/crawl-links`                           |
+| `Plugin.Description()`                                       | `@quartz-community/description`                           |
+| `Plugin.Latex()`                                             | `@quartz-community/latex`                                 |
+| `Plugin.ViewImage()`                                         | `./plugins/sirius-view-image`                             |
+| `Plugin.RemoveDrafts()`                                      | `@quartz-community/remove-draft`                          |
+| `Plugin.AliasRedirects()`                                    | `@quartz-community/alias-redirects`                       |
+| `Plugin.ContentIndex()`                                      | `@quartz-community/content-index`                         |
+| `Plugin.Favicon()`                                           | `@quartz-community/favicon`                               |
+| `Plugin.ContentPage/FolderPage/TagPage()`                    | `@quartz-community/{content,folder,tag}-page`             |
+| `Plugin.NotFoundPage()`                                      | 核心内置 pageType,无需配置                                |
+| `Plugin.ComponentResources/Assets/Static()`                  | 核心内置 emitter,无需配置                                 |
+| `Component.Flex({Search, Darkmode, ReaderMode})`             | `layout.group: toolbar` + 顶层 `layout.groups.toolbar`    |
+| `Component.ConditionalRender({condition: slug !== "index"})` | `layout.condition: not-index`(内置)                       |
+| RecentNotes 的标签条件                                       | `quartz.ts` 里 `registerCondition("sirius-landing-page")` |
+| `defaultContentPageLayout` / `defaultListPageLayout` 的差异  | `layout.byPageType.{folder,tag}`                          |
+| `Component.WalineComment()`                                  | `./plugins/sirius-waline`                                 |
+| `Component.Friends()` / `Component.SpotifyPlayer()`          | 已丢弃                                                    |

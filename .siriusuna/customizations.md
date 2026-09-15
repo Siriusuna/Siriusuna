@@ -88,7 +88,7 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 - `--custom-highlight` / `--border-radius`
 - 行内 `code` 与 `pre` 的配色
 - `.content-meta` 用 Monsieur La Doulaise 手写体
-- `body` 背景图(`ToriNoUta.jpg`)+ 一层随主题变化的半透明遮罩
+- `body` 背景图(`torinouta.jpg`)+ 一层随主题变化的半透明遮罩
 - `.page article` / `.page-listing` 的半透明卡片,让背景图透出来
 - **`html` 移动端 `scroll-padding-top: 0`** —— v4 是直接把这条规则从 `base.scss` 里删掉的,
   现在改成在这里覆盖,核心文件保持原样
@@ -100,12 +100,12 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 | `fonts/QiushuiShotai.woff2` (9.5M)         | 正文字体                                        |
 | `fonts/LXGWWenKaiMonoTC-Bold.woff2` (5.2M) | 秋水书体的粗体替身                              |
 | `fonts/TekitouPoem.woff2` (3.0M)           | 歌词页字体                                      |
-| `images/ToriNoUta.jpg`                     | 全站背景图,被 `custom.scss` 引用                |
-| `images/Isekaijoutyo-siriusunosinzou.jpg`  | `content/index.md` 引用                         |
-| `avatars/Siriusuna.png`                    | `content/about.md` 与 `content/friends.md` 引用 |
+| `images/torinouta.jpg`                     | 全站背景图,被 `custom.scss` 引用                |
+| `images/isekaijoutyo-siriusunosinzou.jpg`  | `content/index.md` 引用                         |
+| `avatars/siriusuna.png`                    | `content/about.md` 与 `content/friends.md` 引用 |
 
 > 这些都是**内容或样式在引用**的资源。删任何一个之前,先
-> `grep -rn "/static/" content/` 确认没人用。
+> `grep -rn "/static/" content/` 确认没人用。新增资源请用小写文件名,原因见下。
 
 ---
 
@@ -115,11 +115,67 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 | 项                                                                  | 设置    | 原因                                                                                |
 | ------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------- |
+| `quartz-fonts`                                                      | `false` | **见下方「字体为什么不能开 quartz-fonts」**,开着会覆盖全站字体                      |
+| `@quartz-themes/core`                                               | `false` | 预设配色主题(默认 tokyo-night),启用会接管 `theme.colors`。上游默认也是关的          |
 | `note-properties.hidePropertiesView`                                | `true`  | 上游默认会在正文上方渲染一个属性表格,v4 没有这东西                                  |
 | `og-image`                                                          | `false` | v4 就注释掉了,为了构建速度                                                          |
 | `cname`                                                             | `false` | 自定义域名配在仓库 Pages 设置里,不需要产出 CNAME 文件                               |
 | `canvas-page` / `bases-page` / `encrypted-pages` / `unlisted-pages` | `false` | 上游默认开,但本站内容用不到,关掉减少表面积                                          |
 | `theme.fontOrigin`                                                  | `local` | 字体由 `custom.scss` 和 `sirius-site-assets` 提供,不要让 Quartz 再注入 Google Fonts |
+
+### 字体为什么不能开 `quartz-fonts`
+
+`@quartz-community/quartz-fonts` 的 `useThemeFonts` 选项读的是**主题插件
+(`@quartz-themes/core`)提供的字体注册表**,而**不是** `quartz.config.yaml` 里的
+`configuration.theme.typography`。
+
+本站(以及上游自己的默认配置)没有安装主题,于是该插件回退到它硬编码的一套默认字体,
+并产出:
+
+```css
+@layer quartz-fonts {
+  :root {
+    --bodyFont: Source Sans Pro;
+    --headerFont: Schibsted Grotesk;
+    --codeFont: IBM Plex Mono;
+  }
+}
+```
+
+这份样式表排在核心样式表**之后**,于是把 `theme.typography` 配的字体全部覆盖掉,
+同时还会从 Google Fonts 拉三套没人用的字体。
+
+> 这实际上是个上游 bug:上游默认的 `theme.typography` 恰好**就等于**那套硬编码字体,
+> 所以它自己不会发现;**任何人改了 typography 都会踩到**。
+>
+> 如果哪天要启用 `@quartz-themes/core`,再一并重新评估这个插件。
+
+字体现在的来源:
+
+- 自托管:`quartz/styles/custom.scss` 里的 `@font-face`(QiushuiShotai / Tekitou)
+- CDN:`sirius-site-assets` 插件(LXGW WenKai Screen / Maple Mono NF CN / Monsieur La Doulaise)
+- `--headerFont` / `--bodyFont` / `--codeFont` 由 Quartz 核心从 `theme.typography` 生成
+
+---
+
+## 静态资源必须用小写文件名
+
+**规则:任何会被笔记正文引用的 `quartz/static/` 资源,文件名必须全小写。**
+
+原因:v5 的 CrawlLinks 会把笔记里的 URL 路径**小写化**,但核心的 `Static` emitter 是
+**原样复制** `quartz/static/**`、不改文件名。所以 `Foo.jpg` 在 HTML 里会变成
+`./static/foo.jpg`,在大小写敏感的主机(GitHub Pages)上直接 404 —— 而且**构建不会报任何警告**。
+
+迁移刚上线时就踩了这个坑。现在由 `.siriusuna/check-static-refs.mjs` 兜底,CI 每次构建后
+都会扫描产物里所有 `/static/` 引用,有一个解析不到就直接失败:
+
+```bash
+npx quartz build && node .siriusuna/check-static-refs.mjs
+```
+
+`fonts/` 目录是例外(目前仍是大小写混合):它只被 `custom.scss` 引用,而 CSS 里的 `url()`
+不会被 CrawlLinks 重写。之所以不顺手改成小写,是因为这三个 woff2 共 18MB,重命名会在
+git 历史里再留一份副本,而 CI 用的是 `fetch-depth: 0`,每次构建都要为此多拉 18MB。
 
 ## 已丢弃的 v4 魔改
 

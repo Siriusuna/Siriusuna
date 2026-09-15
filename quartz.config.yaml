@@ -129,8 +129,18 @@ plugins:
     enabled: true
     order: 95
 
+  # Deliberately disabled. This plugin serves fonts declared by an installed *theme*
+  # (@quartz-themes/core) — its `useThemeFonts` option reads that theme registry, NOT
+  # configuration.theme.typography above. With no theme installed it falls back to
+  # upstream's own defaults and emits `@layer quartz-fonts { :root { --bodyFont: Source
+  # Sans Pro; --headerFont: Schibsted Grotesk; --codeFont: IBM Plex Mono } }`, which lands
+  # after the core stylesheet and overrides every font on the site. It also pulls three
+  # unused families from Google Fonts on every page.
+  # This site supplies all of its own fonts: @font-face in quartz/styles/custom.scss for the
+  # self-hosted faces, CDN stylesheets from sirius-site-assets for the rest. Quartz core
+  # already derives --headerFont/--bodyFont/--codeFont from theme.typography.
   - source: "@quartz-community/quartz-fonts"
-    enabled: true
+    enabled: false
 
   # Not used on this site.
   - source: "@quartz-community/citations"

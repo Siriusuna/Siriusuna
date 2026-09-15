@@ -68,10 +68,17 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
 
+      # CrawlLinks lowercases /static/ URLs in note content but the Static emitter copies
+      # quartz/static/** verbatim, so a capitalised asset filename 404s with no build
+      # warning. Catch it here rather than on the live site.
+      - name: Verify static references resolve
+        run: node .siriusuna/check-static-refs.mjs
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: public
+
   deploy:
     needs: build
     environment:
