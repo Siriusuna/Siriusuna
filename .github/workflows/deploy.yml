@@ -3,7 +3,7 @@ name: Deploy Quartz site to GitHub Pages
 on:
   push:
     branches:
-      - v5
+      - siriusuna
   repository_dispatch:
     types: [content_updated]
   workflow_dispatch:
