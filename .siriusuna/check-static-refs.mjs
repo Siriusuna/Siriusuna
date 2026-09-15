@@ -27,20 +27,52 @@ if (!existsSync(publicDir)) {
   process.exit(1)
 }
 
-const REF = /(?:src|href)="((?:\.{1,2}\/)*static\/[^"]+)"/g
+/** Read baseUrl from quartz.config.yaml so self-referencing absolute URLs can be checked too. */
+function readBaseUrl() {
+  try {
+    const cfg = readFileSync("quartz.config.yaml", "utf8")
+    return cfg.match(/^\s*baseUrl:\s*["']?([^"'\s#]+)/m)?.[1] ?? null
+  } catch {
+    return null
+  }
+}
+
+const baseUrl = readBaseUrl()
+
+// Relative refs (./static/…, ../static/…, static/…) — CrawlLinks rewrites these.
+const RELATIVE_REF = /(?:src|href)="((?:\.{1,2}\/)*static\/[^"]+)"/g
+// Absolute refs back at this same site. CrawlLinks leaves these alone, so they keep whatever
+// case the note author typed and break independently of the relative ones.
+const ABSOLUTE_REF = baseUrl
+  ? new RegExp(
+      `(?:src|href)="https?://${baseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(/static/[^"]+)"`,
+      "g",
+    )
+  : null
 
 let checked = 0
 const missing = new Map()
 
+function record(ref, entry) {
+  if (!missing.has(ref)) missing.set(ref, [])
+  missing.get(ref).push(entry)
+}
+
 for await (const entry of glob("**/*.html", { cwd: publicDir })) {
   const file = path.join(publicDir, entry)
   const html = readFileSync(file, "utf8")
-  for (const [, ref] of html.matchAll(REF)) {
+
+  for (const [, ref] of html.matchAll(RELATIVE_REF)) {
     checked++
     const target = path.resolve(path.dirname(file), decodeURIComponent(ref))
-    if (!existsSync(target)) {
-      if (!missing.has(ref)) missing.set(ref, [])
-      missing.get(ref).push(entry)
+    if (!existsSync(target)) record(ref, entry)
+  }
+
+  if (ABSOLUTE_REF) {
+    for (const [, urlPath] of html.matchAll(ABSOLUTE_REF)) {
+      checked++
+      const target = path.join(publicDir, decodeURIComponent(urlPath))
+      if (!existsSync(target)) record(`https://${baseUrl}${urlPath}`, entry)
     }
   }
 }
