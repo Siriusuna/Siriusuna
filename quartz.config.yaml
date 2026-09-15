@@ -1,0 +1,358 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+#
+# Siriusuna's Quartz 5 configuration. Ported from the Quartz 4 quartz.config.ts +
+# quartz.layout.ts. See .siriusuna/customizations.md for what deviates from upstream
+# defaults and why.
+#
+# Local plugins live in plugins/ and are referenced by relative path. After editing any
+# of their src/, run `npm run build:plugins` — the loader uses their committed dist/.
+
+configuration:
+  pageTitle: シリウスの砂
+  pageTitleSuffix: " | Siriusuna"
+  enableSPA: true
+  enablePopovers: true
+  analytics:
+    provider: plausible
+  locale: zh-CN
+  baseUrl: siriusuna.top
+  ignorePatterns:
+    - private
+    - templates
+    - .obsidian
+    - .trash
+    - drafts
+  theme:
+    # Fonts are supplied by quartz/styles/custom.scss (@font-face for the self-hosted
+    # woff2 files) and by the sirius-site-assets plugin (CDN stylesheets), so Quartz must
+    # not inject its own Google Fonts links.
+    fontOrigin: local
+    cdnCaching: false
+    typography:
+      header: LXGW WenKai Screen
+      body: QiushuiShotai
+      code: Maple Mono NF CN
+    colors:
+      lightMode:
+        light: "#faf8f8"
+        lightgray: "#e5e5e5"
+        gray: "#b8b8b8"
+        darkgray: "#4e4e4e"
+        dark: "#2b2b2b"
+        secondary: "#284b63"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
+        textHighlight: "#fff23688"
+      darkMode:
+        light: "#161618"
+        lightgray: "#393639"
+        gray: "#646464"
+        darkgray: "#d4d4d4"
+        dark: "#ebebec"
+        secondary: "#7b97aa"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
+        textHighlight: "#b3aa0288"
+
+plugins:
+  # ---------------------------------------------------------------- transformers
+  - source: ./plugins/sirius-site-assets
+    enabled: true
+    order: 1
+    options:
+      # Nothing in content/ instantiates an APlayer instance, and Maple Mono NF CN
+      # replaced Fira Code as the code font. Both were loaded on every page in v4.
+      enableAPlayer: false
+      enableFiraCode: false
+
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    order: 5
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      # Quartz 4 rendered no properties table; keep it that way.
+      hidePropertiesView: true
+      delimiters: ---
+      language: yaml
+
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    order: 10
+    options:
+      defaultDateType: modified
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    order: 20
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    order: 30
+    options:
+      enableInHtmlEmbed: false
+
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    order: 60
+    options:
+      markdownLinkResolution: shortest
+
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+
+  - source: "@quartz-community/latex"
+    enabled: true
+    order: 80
+    options:
+      renderEngine: katex
+
+  - source: ./plugins/sirius-view-image
+    enabled: true
+    order: 95
+
+  - source: "@quartz-community/quartz-fonts"
+    enabled: true
+
+  # Not used on this site.
+  - source: "@quartz-community/citations"
+    enabled: false
+  - source: "@quartz-community/hard-line-breaks"
+    enabled: false
+  - source: "@quartz-community/ox-hugo"
+    enabled: false
+  - source: "@quartz-community/roam"
+    enabled: false
+  - source: "@quartz-themes/core"
+    enabled: false
+
+  # ---------------------------------------------------------------- filters
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  - source: "@quartz-community/explicit-publish"
+    enabled: false
+
+  # ---------------------------------------------------------------- emitters
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+  - source: "@quartz-community/favicon"
+    enabled: true
+  # Custom OG images were commented out in v4 to keep build times down.
+  - source: "@quartz-community/og-image"
+    enabled: false
+  # The custom domain is configured in the repo's Pages settings, not emitted.
+  - source: "@quartz-community/cname"
+    enabled: false
+  - source: "@quartz-community/encrypted-pages"
+    enabled: false
+  - source: "@quartz-community/unlisted-pages"
+    enabled: false
+
+  # ---------------------------------------------------------------- page types
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/folder-page"
+    enabled: true
+  - source: "@quartz-community/tag-page"
+    enabled: true
+  - source: "@quartz-community/canvas-page"
+    enabled: false
+  - source: "@quartz-community/bases-page"
+    enabled: false
+
+  # ---------------------------------------------------------------- layout: beforeBody
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+
+  # Local fork: shows created / modified / published side by side with emoji labels.
+  # The upstream content-meta shows a single date and cannot be configured to do this.
+  - source: ./plugins/sirius-content-meta
+    enabled: true
+    options:
+      showReadingTime: true
+      showComma: true
+      dateLocale: en-US
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: "@quartz-community/content-meta"
+    enabled: false
+
+  - source: "@quartz-community/tag-list"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 30
+
+  # ---------------------------------------------------------------- layout: left
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout:
+      position: left
+      priority: 10
+
+  - source: "@quartz-community/spacer"
+    enabled: true
+    layout:
+      position: left
+      priority: 25
+      display: mobile-only
+
+  # Local wrapper: hides the landing pages themselves from the list. Shown only on the
+  # landing pages, via the `sirius-landing-page` condition registered in quartz.ts.
+  - source: ./plugins/sirius-recent-notes
+    enabled: true
+    options:
+      limit: 2
+      excludeTags:
+        - 主页
+        - 介绍
+    layout:
+      position: left
+      priority: 30
+      display: desktop-only
+      condition: sirius-landing-page
+  - source: "@quartz-community/recent-notes"
+    enabled: false
+
+  - source: "@quartz-community/search"
+    enabled: true
+    layout:
+      position: left
+      priority: 20
+      group: toolbar
+      groupOptions:
+        grow: true
+
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout:
+      position: left
+      priority: 30
+      group: toolbar
+
+  - source: "@quartz-community/reader-mode"
+    enabled: true
+    layout:
+      position: left
+      priority: 35
+      group: toolbar
+
+  - source: "@quartz-community/explorer"
+    enabled: true
+    layout:
+      position: left
+      priority: 50
+
+  # ---------------------------------------------------------------- layout: right
+  - source: "@quartz-community/graph"
+    enabled: true
+    layout:
+      position: right
+      priority: 10
+
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    layout:
+      position: right
+      priority: 30
+      display: desktop-only
+
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+
+  # ---------------------------------------------------------------- layout: afterBody
+  - source: ./plugins/sirius-waline
+    enabled: true
+    options:
+      serverUrl: https://waline.siriusuna.top
+      lang: zh-CN
+      emoji:
+        - https://unpkg.com/@waline/emojis@1.4.0/tieba
+    layout:
+      position: afterBody
+      priority: 10
+
+  # Replaced by Waline; kept here (disabled) as a record of the v4 giscus setup.
+  - source: "@quartz-community/comments"
+    enabled: false
+  - source: "@quartz-community/stacked-pages"
+    enabled: false
+
+  # ---------------------------------------------------------------- layout: footer
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        GitHub@Siriusuna: https://github.com/Siriusuna
+        X@Salieri1122: https://x.com/Salieri1122
+        Mail@Siriusuna: mailto:Siriusuna@outlook.com
+    layout:
+      position: footer
+      priority: 50
+
+layout:
+  groups:
+    toolbar:
+      priority: 35
+      direction: row
+      gap: 0.5rem
+  byPageType:
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []
+    content: {}
+    # Quartz 4's list-page layout was a trimmed-down version of the content layout:
+    # no reader mode, no tag list, no recent notes, and an empty right column.
+    folder:
+      exclude:
+        - reader-mode
+        - tag-list
+        - sirius-recent-notes
+      positions:
+        right: []
+    tag:
+      exclude:
+        - reader-mode
+        - tag-list
+        - sirius-recent-notes
+      positions:
+        right: []

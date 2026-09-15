@@ -1,3 +1,104 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ---------------------------------------------------------------------------
+// Self-hosted webfonts. Files live in quartz/static/fonts/ and are copied to
+// /static/fonts/ by the Static emitter. CDN-hosted faces (LXGW WenKai Screen,
+// Maple Mono NF CN, Monsieur La Doulaise) come from the sirius-site-assets plugin.
+// ---------------------------------------------------------------------------
+
+@font-face {
+  font-family: "QiushuiShotai";
+  src: url("/static/fonts/QiushuiShotai.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  // Qiushui Shotai has no bold cut — LXGW WenKai Mono TC Bold stands in for it.
+  font-family: "QiushuiShotai";
+  src: url("/static/fonts/LXGWWenKaiMonoTC-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tekitou";
+  src: url("/static/fonts/TekitouPoem.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ---------------------------------------------------------------------------
+// Theme
+// ---------------------------------------------------------------------------
+
+:root {
+  --custom-highlight: #3082e0;
+  --border-radius: 4px;
+}
+
+// Quartz 4 removed this rule from base.scss directly. Overridden here instead so the
+// core file stays untouched and upstream merges stay clean.
+html {
+  @media all and #{$mobile} {
+    scroll-padding-top: 0;
+  }
+}
+
+:not(pre) > code {
+  background-color: color-mix(in srgb, var(--lightgray), transparent 10%);
+  border: 1px solid var(--gray);
+  color: var(--custom-highlight);
+  border-radius: var(--border-radius);
+  padding: 0 0.3rem;
+  margin: 0 0.2em;
+  font-weight: 500;
+}
+
+pre {
+  background-color: color-mix(in srgb, var(--lightgray), transparent 10%);
+}
+
+.content-meta {
+  font-family: "Monsieur La Doulaise", cursive;
+}
+
+// ---------------------------------------------------------------------------
+// Background image, dimmed by a theme-coloured wash so text stays readable in
+// both light and dark mode.
+// ---------------------------------------------------------------------------
+
+body {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--light), transparent 40%),
+      color-mix(in srgb, var(--light), transparent 40%)
+    ),
+    url("/static/images/ToriNoUta.jpg");
+
+  background-color: var(--light);
+}
+
+// Translucent card so the background image shows through around the text.
+.page article,
+.page-listing {
+  background-color: color-mix(in srgb, var(--lightgray), transparent 30%);
+  border-radius: 5px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+// Used by song-lyric notes under シリウスステーション.
+.lyrics {
+  font-family: "Tekitou", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}

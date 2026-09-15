@@ -1,0 +1,49 @@
+{
+  "name": "@siriusuna/site-assets",
+  "version": "1.0.0",
+  "description": "External fonts and scripts injected into <head> for Siriusuna's Quartz site.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "sirius-site-assets",
+    "displayName": "Site Assets",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 1,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "enableAPlayer": false,
+      "enableFiraCode": false
+    },
+    "optionSchema": {
+      "enableAPlayer": {
+        "type": "boolean"
+      },
+      "enableFiraCode": {
+        "type": "boolean"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

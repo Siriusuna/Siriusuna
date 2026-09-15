@@ -1,0 +1,79 @@
+name: Deploy Quartz site to GitHub Pages
+
+# Migration phase: this workflow builds and uploads the artifact but does NOT deploy.
+# The live site is still served from the `siriusuna` (Quartz 4) branch. Once the v5 build
+# has been verified, add the `deploy` job back (see .siriusuna/migration-v4-to-v5.md) and
+# switch the repository's default branch.
+
+on:
+  push:
+    branches:
+      - v5
+  repository_dispatch:
+    types: [content_updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          ssh-key: ${{ secrets.NOTES_SSH_KEY }}
+          # Kept true so the following step can reach the private Notes repo.
+          persist-credentials: true
+
+      - name: Update submodules to latest
+        run: git submodule update --remote --recursive
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Cache npm downloads
+        uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The Quartz loader consumes each local plugin's committed dist/. Rebuilding here and
+      # failing on any diff catches the easy mistake of editing plugins/*/src without running
+      # `npm run build:plugins` — otherwise the site would silently build from stale code.
+      - name: Verify local plugin builds are up to date
+        run: |
+          npm run build:plugins
+          if ! git diff --quiet -- plugins; then
+            echo "::error::plugins/*/dist is stale. Run 'npm run build:plugins' and commit the result."
+            git diff --stat -- plugins
+            exit 1
+          fi
+
+      # --from-config rather than a bare `install`: quartz.lock.json is gitignored because for
+      # local (path-sourced) plugins it only records absolute machine paths and timestamps.
+      - name: Install Quartz plugins
+        run: npx quartz plugin install --from-config
+
+      - name: Build Quartz
+        run: npx quartz build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public

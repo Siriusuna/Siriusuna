@@ -1,0 +1,64 @@
+{
+  "name": "@siriusuna/content-meta",
+  "version": "1.0.0",
+  "description": "ContentMeta fork showing created/modified/published dates with emoji labels.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "sirius-content-meta",
+    "displayName": "Content Meta (Siriusuna)",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 50,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "showReadingTime": true,
+      "showComma": true,
+      "dateLocale": "en-US"
+    },
+    "optionSchema": {
+      "showReadingTime": {
+        "type": "boolean"
+      },
+      "showComma": {
+        "type": "boolean"
+      },
+      "dateLocale": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "ContentMeta": {
+        "displayName": "Content Meta (Siriusuna)",
+        "defaultPosition": "beforeBody",
+        "defaultPriority": 20
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

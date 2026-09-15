@@ -12,3 +12,11 @@ replit.nix
 .quartz/
 quartz/cli/tui/dist/
 .turbo/
+
+# --- Siriusuna ---
+# Local (path-sourced) plugins only ever record absolute machine paths and install
+# timestamps here, so the lockfile is regenerated per machine and in CI with
+# `npx quartz plugin install --from-config` instead of being committed.
+quartz.lock.json
+# Toolchain for plugins/*, installed from the repo root.
+plugins/*/node_modules/

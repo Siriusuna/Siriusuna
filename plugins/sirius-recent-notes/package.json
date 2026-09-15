@@ -1,0 +1,69 @@
+{
+  "name": "@siriusuna/recent-notes",
+  "version": "1.0.0",
+  "description": "RecentNotes wrapper that hides landing pages from the list.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "sirius-recent-notes",
+    "displayName": "Recent Notes (Siriusuna)",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 50,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "limit": 2,
+      "excludeTags": [
+        "主页",
+        "介绍"
+      ]
+    },
+    "optionSchema": {
+      "title": {
+        "type": "string"
+      },
+      "limit": {
+        "type": "number"
+      },
+      "showTags": {
+        "type": "boolean"
+      },
+      "excludeTags": {
+        "type": "array"
+      }
+    },
+    "components": {
+      "RecentNotes": {
+        "displayName": "Recent Notes (Siriusuna)",
+        "defaultPosition": "left",
+        "defaultPriority": 30
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

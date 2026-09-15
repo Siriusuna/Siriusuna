@@ -1,0 +1,80 @@
+{
+  "name": "@siriusuna/waline",
+  "version": "1.0.0",
+  "description": "Waline comment component for Siriusuna's Quartz site.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "sirius-waline",
+    "displayName": "Waline Comments",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 50,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "serverUrl": "",
+      "lang": "zh-CN",
+      "pageview": true,
+      "comment": true,
+      "reaction": true,
+      "emoji": [],
+      "darkModeSelector": "html[saved-theme=\"dark\"]"
+    },
+    "optionSchema": {
+      "serverUrl": {
+        "type": "string"
+      },
+      "lang": {
+        "type": "string"
+      },
+      "pageview": {
+        "type": "boolean"
+      },
+      "comment": {
+        "type": "boolean"
+      },
+      "reaction": {
+        "type": "boolean"
+      },
+      "emoji": {
+        "type": "array"
+      },
+      "darkModeSelector": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "WalineComment": {
+        "displayName": "Waline Comments",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 10
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

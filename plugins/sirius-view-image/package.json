@@ -1,0 +1,42 @@
+{
+  "name": "@siriusuna/view-image",
+  "version": "1.0.0",
+  "description": "Image lightbox (ViewImage.js) for Siriusuna's Quartz site.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup"
+  },
+  "quartz": {
+    "name": "sirius-view-image",
+    "displayName": "View Image Lightbox",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 95,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "selector": "article img, .content img"
+    },
+    "optionSchema": {
+      "selector": {
+        "type": "string"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
