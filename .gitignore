@@ -20,3 +20,10 @@ quartz/cli/tui/dist/
 quartz.lock.json
 # Toolchain for plugins/*, installed from the repo root.
 plugins/*/node_modules/
+
+# Desktop font sources for `npm run build:fonts` (~100MB). Not needed to build the
+# site — the sliced woff2 under quartz/static/fonts/cjk/ are committed instead.
+.fonts-src/
+
+# Intermediate subset .ttf produced by scripts/prepare-cjk-sources.py.
+build/

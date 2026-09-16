@@ -9,11 +9,11 @@ import { QuartzTransformerPlugin } from '@quartz-community/types';
  * integrity/crossorigin/referrerpolicy attributes that a plain CSSResource URL cannot express.
  *
  * Fonts referenced by quartz.config.yaml typography and by quartz/styles/custom.scss:
- *   - LXGW WenKai Screen  -> `header` font
- *   - Maple Mono NF CN    -> `code` font, served by ZeoSeven #442
+ *   - Jigmo              -> last-resort CJK fallback, served sliced by ZeoSeven #881
+ *   - Maple Mono NF CN   -> CJK inside code blocks (Monaspace is Latin-only), ZeoSeven #442
  *   - Monsieur La Doulaise-> `.content-meta` in custom.scss
- * Locally hosted faces (QiushuiShotai, TekitouPoem, LXGWWenKaiMonoTC-Bold) are declared as
- * @font-face in custom.scss and served from quartz/static/fonts/.
+ * Locally hosted faces (Alegreya, Monaspace, the four SiriusCJK faces, TekitouPoem) are
+ * declared as @font-face in custom.scss / fonts-cjk.scss and served from quartz/static/fonts/.
  */
 interface SiteAssetsOptions {
     /**

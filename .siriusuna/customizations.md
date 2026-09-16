@@ -35,12 +35,12 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 - **为什么是本地插件**:v4 是直接改 `quartz/components/Head.tsx` 注入的,那是冲突重灾区。
   现在通过 transformer 的 `externalResources().additionalHead` 提供,核心零修改。
-- **提供**:LXGW WenKai Screen(cdnjs)、Maple Mono NF CN(ZeoSeven #442)、
-  Monsieur La Doulaise(Google Fonts,给 `.content-meta` 用),以及相关 preconnect。
+- **提供**:Jigmo(ZeoSeven #881,CJK 兜底)、Maple Mono NF CN(ZeoSeven #442,代码块里的
+  中日文)、Monsieur La Doulaise(Google Fonts,给 `.content-meta` 用),以及相关 preconnect。
 - **两个默认关闭的开关**:
   - `enableAPlayer`(默认 `false`)—— v4 每个页面都加载 APlayer 的 CSS+JS,但全站内容里
     **没有任何一处真的创建播放器实例**。要用回来就设成 `true`。
-  - `enableFiraCode`(默认 `false`)—— 代码字体已经换成 Maple Mono NF CN,Fira Code 是遗留的。
+  - `enableFiraCode`(默认 `false`)—— 代码字体是 Monaspace,Fira Code 是遗留的。
 
 ### `sirius-content-meta` — 三日期显示
 
@@ -83,8 +83,11 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 上游约定的用户样式文件,内容:
 
-- 三个自托管字体的 `@font-face`:QiushuiShotai(正文)、LXGWWenKaiMonoTC-Bold(充当秋水书体的粗体)、
+- 自托管字体的 `@font-face`:Alegreya(西文正文/标题,可变字重)、Monaspace 四路(代码)、
   Tekitou(歌词页 `.lyrics` 用)
+- `@use "./fonts-cjk.scss"` —— 四路 CJK 的 `@font-face`,由 `npm run build:fonts` 生成
+- `--titleFont` / `--headerFont` / `--bodyFont` / `--codeFont` 的完整回退栈
+- 代码块的 `font-feature-settings`(Monaspace 的 OpenType 特性)
 - `--custom-highlight` / `--border-radius`
 - 行内 `code` 与 `pre` 的配色
 - `.content-meta` 用 Monsieur La Doulaise 手写体
@@ -95,14 +98,15 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 ### `quartz/static/`
 
-| 文件                                       | 用途                                            |
-| ------------------------------------------ | ----------------------------------------------- |
-| `fonts/QiushuiShotai.woff2` (9.5M)         | 正文字体                                        |
-| `fonts/LXGWWenKaiMonoTC-Bold.woff2` (5.2M) | 秋水书体的粗体替身                              |
-| `fonts/TekitouPoem.woff2` (3.0M)           | 歌词页字体                                      |
-| `images/torinouta.jpg`                     | 全站背景图,被 `custom.scss` 引用                |
-| `images/isekaijoutyo-siriusunosinzou.jpg`  | `content/index.md` 引用                         |
-| `avatars/siriusuna.png`                    | `content/about.md` 与 `content/friends.md` 引用 |
+| 文件                                      | 用途                                            |
+| ----------------------------------------- | ----------------------------------------------- |
+| `fonts/alegreya-vf-*.woff2` (4 × ~40K)    | 西文正文与标题,latin / latin-ext × 正体 / 斜体  |
+| `fonts/monaspace-*-nf-*.woff2` (4 × 1.3M) | 代码字体四路,Nerd Font 版本                     |
+| `fonts/cjk/**` (830 个切片,31M)           | 四路 CJK,**由 `npm run build:fonts` 生成**      |
+| `fonts/TekitouPoem.woff2` (3.0M)          | 歌词页字体                                      |
+| `images/torinouta.jpg`                    | 全站背景图,被 `custom.scss` 引用                |
+| `images/isekaijoutyo-siriusunosinzou.jpg` | `content/index.md` 引用                         |
+| `avatars/siriusuna.png`                   | `content/about.md` 与 `content/friends.md` 引用 |
 
 > 这些都是**内容或样式在引用**的资源。删任何一个之前,先
 > `grep -rn "/static/" content/` 确认没人用。新增资源请用小写文件名,原因见下。
@@ -152,9 +156,63 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 字体现在的来源:
 
-- 自托管:`quartz/styles/custom.scss` 里的 `@font-face`(QiushuiShotai / Tekitou)
-- CDN:`sirius-site-assets` 插件(LXGW WenKai Screen / Maple Mono NF CN / Monsieur La Doulaise)
-- `--headerFont` / `--bodyFont` / `--codeFont` 由 Quartz 核心从 `theme.typography` 生成
+- 自托管:`custom.scss` 的 `@font-face`(Alegreya / Monaspace / Tekitou)+ 生成的
+  `fonts-cjk.scss`(四路 CJK 切片)
+- CDN:`sirius-site-assets` 插件(Jigmo / Maple Mono NF CN / Monsieur La Doulaise)
+- `--titleFont` / `--headerFont` / `--bodyFont` / `--codeFont` 由 `custom.scss` 覆盖,
+  **不是**由 Quartz 核心从 `theme.typography` 生成的那一份(原因见下)
+
+---
+
+## 字体体系
+
+移植自 siriusuna 的 WezTerm `font_rules` 配置:**一个 family 名下挂四个物理字体,
+浏览器按 weight/style 自动分流**。CSS 原生支持这件事 —— 几条共用 family 名、只有
+`font-weight` / `font-style` 描述符不同的 `@font-face` —— 所以不需要 JS,也不需要给元素加 class。
+
+| weight / style | 西文正文        | 代码(Monaspace)   | CJK(SiriusCJK)      | WezTerm 对应         |
+| -------------- | --------------- | ----------------- | ------------------- | -------------------- |
+| 400 normal     | Alegreya        | Argon             | GenRyuMin2 TC R     | 默认 / kanji_regular |
+| 700 normal     | Alegreya        | Xenon Bold        | GenRyuMin2 TC B     | intensity=Bold       |
+| 400 italic     | Alegreya Italic | Neon Italic       | LXGW WenKai Mono NF | italic=true          |
+| 700 italic     | Alegreya Italic | Radon Bold Italic | Yozai Bold          | Bold + italic        |
+
+回退栈:`"Alegreya", "SiriusCJK", "Jigmo", Georgia, serif`。Alegreya 只有西文,CJK 逐字形
+落到 SiriusCJK;SiriusCJK 只覆盖 BMP 汉字区,更罕见的字落到 Jigmo(CDN,覆盖 Ext A–I)。
+
+### 几个容易被当成 bug 改掉的地方
+
+- **两个「斜体」CJK face 本身是直立字体。** 把 LXGW WenKai Mono 和 Yozai 声明成
+  `font-style: italic`,浏览器就会用它们替代斜体**而不做倾斜** —— WezTerm 就是这么干的。
+  不要加 oblique 变换,也不要让 `font-synthesis` 插进来。
+- **`dlig` 不在 feature 列表里。** Monaspace 根本没有这个 feature,WezTerm 配置里那一项
+  在终端里也是空转。已对 v1.400 核实;其余(`calt` / `liga` / `ss01`–`ss10` / `cv31` /
+  `cv32` / `cv62`)在 Nerd Font 构建里都在。`calt` 驱动 Monaspace 的 texture healing,必须保留。
+- **字体栈必须写在 `custom.scss`,不能写在 `quartz.config.yaml`。** 核心把 typography 的值
+  整个套引号输出(`--bodyFont: "${name}", sans-serif`),YAML 里写逗号分隔的回退栈会变成
+  一个引号字符串,永远解析不了。YAML 里只留每个角色的首选 family。
+- **上游 Monaspace v1.400 的 `MonaspaceNeonNF-Italic.woff2` 有打包 bug**:legacy name
+  ID 1/4/6 写成了 "Monaspace Krypton Var"(name 16/17 和 italicAngle 都是对的)。
+  自托管无所谓 —— 浏览器用的是我们声明的 family 名;装到桌面端才会踩到。
+
+### `npm run build:fonts`
+
+两步:`scripts/prepare-cjk-sources.py`(从 `.ttc` 里抽出 TC face,裁到 BMP 汉字区)+
+`scripts/build-fonts.mjs`(cn-font-split 按 unicode-range 切片,生成 `fonts-cjk.scss`)。
+
+需要 `.fonts-src/` 里的桌面字体源(约 100MB,已 gitignore,**不在仓库里**)和
+`pip install 'fonttools[woff]'`。产物 `quartz/static/fonts/cjk/**` 和 `fonts-cjk.scss`
+**是提交进仓库的**,所以日常构建不需要跑这一步 —— 只有换字体或补字时才跑。
+
+字符集定义在 `prepare-cjk-sources.py` 的 `UNICODES`:BMP 汉字区 + 假名 + 标点 + 西文,
+**不含** CJK Ext A/B+(笔记目前一个都没用到)和 Nerd Font 私用区(图标由代码字体 Monaspace 提供)。
+
+切片粒度定在 70KB,是实测出来的:200KB 和 300KB 虽然总体积更小,但单页下载中位数分别涨到
+409KB 和 4355KB(70KB 是 361KB)。本站内容字符离散度高,大分片的局部性很差。
+
+> **代价**:全量 830 个切片共 31MB,比不切片的整体积大 58%(woff2 压缩整份字体时能跨字形
+> 共享冗余,切开后各压各的)。单页中位 361KB、p90 2.2MB;读者翻的页越多,累计下载越逼近
+> 7MB/字重。这是明知代价后选的方案,不是疏漏。
 
 ---
 
@@ -173,9 +231,11 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 npx quartz build && node .siriusuna/check-static-refs.mjs
 ```
 
-`fonts/` 目录是例外(目前仍是大小写混合):它只被 `custom.scss` 引用,而 CSS 里的 `url()`
-不会被 CrawlLinks 重写。之所以不顺手改成小写,是因为这三个 woff2 共 18MB,重命名会在
-git 历史里再留一份副本,而 CI 用的是 `fetch-depth: 0`,每次构建都要为此多拉 18MB。
+该脚本除了 HTML 的 `src` / `href`,**也扫样式表里的 `url()`** —— 字体全靠 CSS 引用,
+而 `fonts-cjk.scss` 是生成的、带着 800 多条路径,写错一条会静默 404,没有别的信号。
+
+`fonts/` 目录下 `TekitouPoem.woff2` 仍是混合大小写(它只被 `custom.scss` 引用,CSS 的
+`url()` 不会被 CrawlLinks 重写,所以无害)。本次新增的字体一律用小写文件名。
 
 ## 已丢弃的 v4 魔改
 
@@ -186,8 +246,10 @@ git 历史里再留一份副本,而 CI 用的是 `fetch-depth: 0`,每次构建�
 
 ## 构建期依赖
 
-根 `package.json` 的 devDependencies 里加了三个,**只服务于 `plugins/` 的构建**,不进站点产物:
+根 `package.json` 的 devDependencies 里加了四个,**只服务于构建**,不进站点产物:
 
 - `tsup` —— 打包本地插件
 - `sass` —— `tsup.base.ts` 里编译插件内的 `.scss`
 - `reading-time` —— `sirius-content-meta` 用;上游把它打包进自己的 dist 了,根目录没有
+- `cn-font-split` —— `npm run build:fonts` 用,按 unicode-range 切片 CJK 字体。
+  只在换字体时跑,日常构建用不到(切片产物是提交进仓库的)

@@ -28,10 +28,14 @@ configuration:
     # not inject its own Google Fonts links.
     fontOrigin: local
     cdnCaching: false
+    # Only the primary family of each role goes here. Quartz core emits the value wrapped
+    # in quotes (`--bodyFont: "${name}", sans-serif`), so a fallback stack written here
+    # would become a single quoted string and never resolve. custom.scss redefines these
+    # three variables with the full stacks — including the CJK faces and Jigmo.
     typography:
-      header: LXGW WenKai Screen
-      body: QiushuiShotai
-      code: Maple Mono NF CN
+      header: Alegreya
+      body: Alegreya
+      code: Monaspace
     colors:
       lightMode:
         light: "#faf8f8"
