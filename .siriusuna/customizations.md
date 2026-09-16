@@ -35,8 +35,11 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 - **为什么是本地插件**:v4 是直接改 `quartz/components/Head.tsx` 注入的,那是冲突重灾区。
   现在通过 transformer 的 `externalResources().additionalHead` 提供,核心零修改。
-- **提供**:Jigmo(ZeoSeven #881,CJK 兜底)、Maple Mono NF CN(ZeoSeven #442,代码块里的
-  中日文)、Monsieur La Doulaise(Google Fonts,给 `.content-meta` 用),以及相关 preconnect。
+- **提供**:Maple Mono NF CN(ZeoSeven #442,代码块里的中日文)、Monsieur La Doulaise
+  (Google Fonts,给 `.content-meta` 用),以及相关 preconnect。Jigmo 已改为自托管,
+  不再走 CDN。
+- **还负责 `jigmoFirst` 开关**:该开关决定 `<head>` 里要不要多一段覆盖用的 `<style>`,
+  所以放在这个插件里而不是散在样式表中。
 - **两个默认关闭的开关**:
   - `enableAPlayer`(默认 `false`)—— v4 每个页面都加载 APlayer 的 CSS+JS,但全站内容里
     **没有任何一处真的创建播放器实例**。要用回来就设成 `true`。
@@ -103,6 +106,7 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 | `fonts/alegreya-vf-*.woff2` (4 × ~40K)    | 西文正文与标题,latin / latin-ext × 正体 / 斜体  |
 | `fonts/monaspace-*-nf-*.woff2` (4 × 1.3M) | 代码字体四路,Nerd Font 版本                     |
 | `fonts/cjk/**` (830 个切片,31M)           | 四路 CJK,**由 `npm run build:fonts` 生成**      |
+| `fonts/jigmo/**` (163 个切片,6.7M)        | Jigmo 兜底,**由 `npm run build:fonts` 生成**    |
 | `fonts/TekitouPoem.woff2` (3.0M)          | 歌词页字体                                      |
 | `images/torinouta.jpg`                    | 全站背景图,被 `custom.scss` 引用                |
 | `images/isekaijoutyo-siriusunosinzou.jpg` | `content/index.md` 引用                         |
@@ -158,7 +162,7 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 
 - 自托管:`custom.scss` 的 `@font-face`(Alegreya / Monaspace / Tekitou)+ 生成的
   `fonts-cjk.scss`(四路 CJK 切片)
-- CDN:`sirius-site-assets` 插件(Jigmo / Maple Mono NF CN / Monsieur La Doulaise)
+- CDN:`sirius-site-assets` 插件(Maple Mono NF CN / Monsieur La Doulaise)
 - `--titleFont` / `--headerFont` / `--bodyFont` / `--codeFont` 由 `custom.scss` 覆盖,
   **不是**由 Quartz 核心从 `theme.typography` 生成的那一份(原因见下)
 
@@ -177,8 +181,37 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 | 400 italic     | Alegreya Italic | Neon Italic       | LXGW WenKai Mono NF | italic=true          |
 | 700 italic     | Alegreya Italic | Radon Bold Italic | Yozai Bold          | Bold + italic        |
 
-回退栈:`"Alegreya", "SiriusCJK", "Jigmo", Georgia, serif`。Alegreya 只有西文,CJK 逐字形
-落到 SiriusCJK;SiriusCJK 只覆盖 BMP 汉字区,更罕见的字落到 Jigmo(CDN,覆盖 Ext A–I)。
+回退栈:`"Alegreya", "SiriusCJK", "SiriusJigmo", Georgia, serif`。Alegreya 只有西文,CJK 逐字形
+落到 SiriusCJK;SiriusCJK 只覆盖 BMP 汉字区,更罕见的字落到 SiriusJigmo(自托管)。
+
+> Jigmo 用**独立的 family 名** `SiriusJigmo`,没有并进 SiriusCJK:它只有单一字重、没有斜体,
+> 并进去会让它去应答自己渲染不了的粗体/斜体请求。
+
+### `jigmoFirst` 开关
+
+`quartz.config.yaml` → `configuration.theme.typography.jigmoFirst`。改完下次构建生效,
+**不需要重跑 `build:fonts`**。
+
+|               | 正文 CJK 栈                               | 效果                                          |
+| ------------- | ----------------------------------------- | --------------------------------------------- |
+| `false`(默认) | `Alegreya, SiriusCJK, SiriusJigmo, serif` | GenRyuMin2 渲染正文,Jigmo 只兜罕见字          |
+| `true`        | `Alegreya, SiriusJigmo, SiriusCJK, serif` | Jigmo 的无装饰骨架取代 GenRyuMin 的明朝体笔画 |
+
+开着的两个代价(实测,不是估计):
+
+- **Jigmo 没有全角标点。** `，`(U+FF0C)、`；`、`：`、`「」`、`《》` 等都不在它的 cmap 里,
+  会落到 GenRyuMin,同一行出现两套字形。按本站内容统计是 27 种字符、约 7400 次,
+  集中在日语笔记。
+- **Jigmo 的行盒是 1.23em,GenRyuMin 是 1.00em**,正文行距会明显变松。
+
+> 按实测,**默认状态下 Jigmo 一次都不会被命中** —— 正文里 2099 个 CJK 字符全部落在
+> SiriusCJK 子集内。所以 `false` 时它是纯保险,那 163 个切片的字体数据几乎不产生流量
+> (只有 6.7MB 切片里的 CSS 声明会随核心样式表下发)。
+> 真正会掉出全部字体的是 emoji(20 种、675 次),那与字体选择无关。
+
+实现上要注意:`jigmoFirst` 写在 `typography` 块里是为了好找,但 YAML 的 schema 只认
+`header`/`body`/`code`/`title`,所以插件是**直接读文件**判断的(`readJigmoFirst()`),
+而不是走 optionSchema。
 
 ### 几个容易被当成 bug 改掉的地方
 
@@ -200,12 +233,17 @@ Quartz 会把它们 **symlink** 到 `.quartz/plugins/`,并直接使用各自**�
 两步:`scripts/prepare-cjk-sources.py`(从 `.ttc` 里抽出 TC face,裁到 BMP 汉字区)+
 `scripts/build-fonts.mjs`(cn-font-split 按 unicode-range 切片,生成 `fonts-cjk.scss`)。
 
-需要 `.fonts-src/` 里的桌面字体源(约 100MB,已 gitignore,**不在仓库里**)和
-`pip install 'fonttools[woff]'`。产物 `quartz/static/fonts/cjk/**` 和 `fonts-cjk.scss`
+需要 `.fonts-src/` 里的桌面字体源(约 130MB,已 gitignore,**不在仓库里**)。产物 `quartz/static/fonts/cjk/**` 和 `fonts-cjk.scss`
 **是提交进仓库的**,所以日常构建不需要跑这一步 —— 只有换字体或补字时才跑。
 
 字符集定义在 `prepare-cjk-sources.py` 的 `UNICODES`:BMP 汉字区 + 假名 + 标点 + 西文,
 **不含** CJK Ext A/B+(笔记目前一个都没用到)和 Nerd Font 私用区(图标由代码字体 Monaspace 提供)。
+
+Jigmo 也在这一步:`SOURCES` 里只取 `Jigmo.ttf`(BMP)。它一共三个文件,`Jigmo2.ttf`
+是 Ext B、`Jigmo3.ttf` 是 Ext C-I,本站内容里 Ext B+ 是 0 个字,所以不收 —— 那会让
+`.fonts-src/` 再多 43MB 源文件。
+
+需要 `pip install 'fonttools[woff]'`。
 
 切片粒度定在 70KB,是实测出来的:200KB 和 300KB 虽然总体积更小,但单页下载中位数分别涨到
 409KB 和 4355KB(70KB 是 361KB)。本站内容字符离散度高,大分片的局部性很差。

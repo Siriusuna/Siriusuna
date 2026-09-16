@@ -36,6 +36,16 @@ configuration:
       header: Alegreya
       body: Alegreya
       code: Monaspace
+      # --- font switch -------------------------------------------------------------
+      # false (default) — body CJK is GenRyuMin2 TC: a Source Han Serif derivative with
+      #   pronounced Mincho decoration. Jigmo sits at the back and is never reached,
+      #   because every CJK character in content/ falls inside the GenRyuMin subset.
+      # true — Jigmo leads instead: a plain, undecorated GlyphWiki skeleton.
+      #   Try it and read a few pages; see sirius-site-assets for the two measured
+      #   costs (Jigmo has no fullwidth punctuation, and its line box is 1.23em
+      #   instead of 1.00em, so body line height grows).
+      # Takes effect on the next build. No font regeneration needed.
+      jigmoFirst: true
     colors:
       lightMode:
         light: "#faf8f8"

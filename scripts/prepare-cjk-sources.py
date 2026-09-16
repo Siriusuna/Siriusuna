@@ -48,6 +48,10 @@ SOURCES = {
     "genryumin-b": ("GenRyuMin2-B.ttc", 1, "GenRyuMin2 TC B"),
     "lxgw-wenkai-mono": ("LXGWWenKaiMonoNerdFont-Regular.ttf", None, None),
     "yozai-b": ("Yozai-Bold.ttf", None, None),
+    # Jigmo ships as three files: Jigmo.ttf (BMP), Jigmo2.ttf (Ext B), Jigmo3.ttf
+    # (Ext C-I). Only Jigmo.ttf is used — the notes contain zero Ext B+ codepoints, and
+    # Jigmo2 alone would add ~36 MB of source for glyphs nothing references.
+    "jigmo": ("Jigmo.ttf", None, None),
 }
 
 

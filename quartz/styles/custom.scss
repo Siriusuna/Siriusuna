@@ -23,7 +23,7 @@
 // monospace at paragraph length — with the same CJK faces behind it.
 //
 // Files live in quartz/static/fonts/ and are copied to /static/fonts/ by the Static
-// emitter. CDN-hosted faces (Jigmo, Maple Mono NF CN, Monsieur La Doulaise) come from
+// emitter. CDN-hosted faces (Maple Mono NF CN, Monsieur La Doulaise) come from
 // the sirius-site-assets plugin.
 // ---------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ $latin-ext: "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+
 // ---------------------------------------------------------------------------
 
 :root {
-  --sirius-serif-stack: "Alegreya", "SiriusCJK", "Jigmo", Georgia, serif;
+  --sirius-serif-stack: "Alegreya", "SiriusCJK", "SiriusJigmo", Georgia, serif;
 
   --titleFont: var(--sirius-serif-stack);
   --headerFont: var(--sirius-serif-stack);
