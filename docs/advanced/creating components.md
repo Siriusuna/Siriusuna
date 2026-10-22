@@ -1,7 +1,6 @@
 ---
 title: Creating Component Plugins
 ---
-
 > [!warning]
 > This guide assumes you have experience writing JavaScript and are familiar with TypeScript.
 
@@ -38,7 +37,7 @@ npm install
 
 A component plugin's `src/index.ts` typically exports a function (a constructor) that returns a `QuartzComponent`. This allows users to pass configuration options to your component.
 
-```tsx title="src/index.ts"
+```tsx
 import {
   QuartzComponent,
   QuartzComponentConstructor,
@@ -169,7 +168,7 @@ It is best practice to track any event handlers via `window.addCleanup` to preve
 
 In community plugins, TypeScript scripts should be transpiled at build time. The plugin template includes an `inlineScriptPlugin` in `tsup.config.ts` that automatically transpiles `.inline.ts` files imported as text:
 
-```tsx title="src/index.ts"
+```tsx
 import script from "./script.inline.ts"
 
 const Component: QuartzComponent = (props) => {
@@ -190,7 +189,7 @@ npx quartz plugin add github:your-username/my-component
 
 Then, they can add it to their `quartz.config.yaml`:
 
-```yaml title="quartz.config.yaml"
+```yaml
 plugins:
   - source: github:your-username/my-component
     enabled: true
@@ -203,7 +202,7 @@ plugins:
 
 For advanced usage via the TS override in `quartz.ts`:
 
-```ts title="quartz.ts (override)"
+```ts
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import Plugin from "./.quartz/plugins"
 
@@ -224,7 +223,7 @@ Component plugins that also belong to a processing category (transformer, filter
 
 To receive YAML options in a component-only plugin, export an `init` function from your entry point:
 
-```ts title="src/index.ts"
+```ts
 export function init(options?: Record<string, unknown>): void {
   // options contains merged defaultOptions + user's YAML options
   const myFlag = (options?.myFlag as boolean) ?? false
@@ -236,7 +235,7 @@ Quartz's config-loader calls `init()` after importing the module, passing the me
 
 Declare your defaults in `package.json`:
 
-```json title="package.json"
+```json
 {
   "quartz": {
     "category": ["component"],
@@ -262,5 +261,5 @@ Quartz also has internal components that provide layout utilities. These live in
 
 See [[layout-components]] for more details on these utilities.
 
-> [!hint]
+> [!hint] Hint
 > Look at existing community plugins like [Explorer](https://github.com/quartz-community/explorer) or [Darkmode](https://github.com/quartz-community/darkmode) for real-world examples.
