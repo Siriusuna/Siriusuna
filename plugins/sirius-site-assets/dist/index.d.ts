@@ -50,4 +50,5 @@ interface SiteAssetsOptions {
 }
 declare const SiteAssets: QuartzTransformerPlugin<SiteAssetsOptions>;
 
-export { SiteAssets, type SiteAssetsOptions, SiteAssets as default };
+export { SiteAssets, SiteAssets as default };
+export type { SiteAssetsOptions };

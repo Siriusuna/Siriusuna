@@ -17,4 +17,5 @@ interface ViewImageOptions {
 }
 declare const ViewImage: QuartzTransformerPlugin<ViewImageOptions>;
 
-export { ViewImage, type ViewImageOptions, ViewImage as default };
+export { ViewImage, ViewImage as default };
+export type { ViewImageOptions };

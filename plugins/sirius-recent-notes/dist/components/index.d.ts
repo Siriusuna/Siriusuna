@@ -21,4 +21,5 @@ interface RecentNotesOptions {
 }
 declare const _default: (opts?: RecentNotesOptions) => QuartzComponent;
 
-export { _default as RecentNotes, type RecentNotesOptions };
+export { _default as RecentNotes };
+export type { RecentNotesOptions };

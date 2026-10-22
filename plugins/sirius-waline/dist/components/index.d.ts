@@ -16,4 +16,5 @@ interface WalineCommentOptions {
 }
 declare const _default: (opts?: WalineCommentOptions) => QuartzComponent;
 
-export { _default as WalineComment, type WalineCommentOptions };
+export { _default as WalineComment };
+export type { WalineCommentOptions };

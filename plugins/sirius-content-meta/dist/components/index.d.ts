@@ -24,4 +24,5 @@ declare const _default: (opts?: Partial<ContentMetaOptions>) => {
     css: string;
 };
 
-export { _default as ContentMeta, type ContentMetaOptions };
+export { _default as ContentMeta };
+export type { ContentMetaOptions };
